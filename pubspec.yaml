@@ -1,0 +1,73 @@
+name: getx_skeleton
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.16.0 <3.0.0'
+
+dependencies: 
+  cupertino_icons:
+  get: # for state managment and context less stuff
+
+  logger: # log events in clear way insted of (print)
+
+  flutter_screenutil: # make app responsive
+
+  dio: # for api requests
+
+  hive:  # local database (SQFlite replacement)
+  hive_flutter: # make it easy to use hive (no need for path provider)
+  get_storage: # shared preferences replacement (sync)
+
+  firebase_core:  # to initialize firebase services
+  firebase_messaging:  # fcm services
+  awesome_notifications: # notifications services (will be used for fcm)
+
+  flutter_launcher_icons: # change app icon
+  change_app_package_name: # change package name
+  rename_app: # rename app
+
+
+
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints:
+  build_runner:  # generate dart files
+  hive_generator: # generate hive files
+
+  flutter_test: 
+    sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/vectors/
+    - assets/fonts/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 300
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 700
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+          weight: 300
+        - asset: assets/fonts/Cairo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Cairo-SemiBold.ttf
+          weight: 900
+
