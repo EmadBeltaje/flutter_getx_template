@@ -1,7 +1,7 @@
 
-# Flutter GetX Skeleton
+# Flutter GetX Template
 
-Flutter Getx skeleton project to make creating project process fast and easy
+Flutter Getx template to make starting project fast and easy
 .
 
 ## Introduction
