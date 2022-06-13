@@ -14,24 +14,24 @@ We all face the same problem when we want to start a new project we have to take
 - Safe api requests & error handling 🔏
 - Changing between widgets during api call (loading,success,failed..etc) 😴
 - Snackbar,Toasts & in app notifications 🪖
-- Making app more responsive and stop font scalling ⚖️
-  This project will take care of all this repatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
+- Making app more responsive and stop font scaling ⚖️
+  This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
 
 ## Acknowledgment
 Project was created using [get_cli](https://pub.dev/packages/get_cli) which is a great tool helping you to (start project,create screens/controllers, handling DI)..etc and we will list other packages that helped to create this skeleton
-- [GetX](https://pub.dev/packages/get) for state managment,navigation,mananging dependencies..etc
+- [GetX](https://pub.dev/packages/get) for state management,navigation,managing dependencies..etc
 - [flutter_screenutil](https://pub.dev/packages/flutter_screenutil) to make app more responsive
 - [hive](https://pub.dev/packages/hive) as local database
 - [get_storage](https://pub.dev/packages/get_storage) as shared pref (its more easy and it read data sync)
 - [awesome_notifications](https://pub.dev/packages/awesome_notifications) for local notification
 ## Clone and start project
-Before discoviring folders lets first perform some actions to make the project ready to launch
-- first run this command it will generate hive type adapters (for our custom calsses that we want to store localy)
+Before discovering folders lets first perform some actions to make the project ready to launch
+- first run this command it will generate hive type adapters (for our custom classes that we want to store locally)
 
     ```
     flutter packages pub run build_runner build --delete-conflicting-outputs
     ```
-  if you dont want to use hive comment this line in main.dart
+  if you don't want to use hive comment this line in main.dart
 
     ```dart
     await MyHive.init(adapters: [UserModelAdapter()]);
@@ -41,14 +41,14 @@ Before discoviring folders lets first perform some actions to make the project r
     ScreenUtilInit(
       designSize: const Size(375, 812), // change this to your xd artboard size
     ```
-- FCM & Awesome Notifications are compined at the same class so when ever you connect your app to firebase your app will be ready to recive notifications you dont need to do anything except sending fcm notification to your api via impleminting the method (sendFcmTokenToServer) which is inside FcmHelper class 😎
+- FCM & Awesome Notifications are combined at the same class so when ever you connect your app to firebase your app will be ready to receive notifications you don't need to do anything except sending fcm notification to your api via implementing the method (sendFcmTokenToServer) which is inside FcmHelper class 😎
     ```dart
     static _sendFcmTokenToServer(){
         var token = MySharedPref.getFcmToken();
         // TODO SEND FCM TOKEN TO SERVER
     }
     ```
-- Change app pakcage name
+- Change app package name
     ```
     flutter pub run change_app_package_name:main com.new.package.name
     ```
@@ -60,7 +60,7 @@ Before discoviring folders lets first perform some actions to make the project r
     ```
     flutter pub run flutter_launcher_icons:main
     ```
-- FCM: firebase has recently added (add flutter app) to your firebase which will make adding our flutter(android/ios) app to firebase take only 2 steps 🔥 but first you need to download [Firebase CLI](https://firebase.google.com/docs/cli?authuser=0&hl=en#install_the_firebase_cli) and in the terminal excute:
+- FCM: firebase has recently added (add flutter app) to your firebase which will make adding our flutter(android/ios) app to firebase take only 2 steps 🔥 but first you need to download [Firebase CLI](https://firebase.google.com/docs/cli?authuser=0&hl=en#install_the_firebase_cli) and in the terminal execute:
     ```
     dart pub global activate flutterfire_cli
     ```
@@ -70,7 +70,7 @@ Before discoviring folders lets first perform some actions to make the project r
     ```
   and that's it! your project is now connected to firebase and fcm is up and ready to get notifications
 ## Quick Start
-- Responsive app: to make your app responsive you need to get advantge of using flutter_ScreenUtil so instead of using normal double values for height,width,radius..etc you need to use it like this
+- Responsive app: to make your app responsive you need to get advantage of using flutter_ScreenUtil so instead of using normal double values for height,width,radius..etc you need to use it like this
 -
   ```dart
   200.w // adapted to screen width
@@ -137,8 +137,8 @@ Before discoviring folders lets first perform some actions to make the project r
               apiCallStatus = ApiCallStatus.success;
               update(); // update ui
             },
-            // if you dont pass this method base client
-            // will automaticly handle error and show message
+            // if you don't pass this method base client
+            // will automatically handle error and show message
             onError: (error){
               // show error message to user
               BaseClient.handleApiError(error);
@@ -159,7 +159,7 @@ Before discoviring folders lets first perform some actions to make the project r
         return MyWidgetsAnimator(
             apiCallStatus: controller.apiCallStatus,
             loadingWidget: () => const Center(child: CircularProgressIndicator(),),
-            errorWidget: ()=> const Center(child: Text('Something went worng!'),),
+            errorWidget: ()=> const Center(child: Text('Something went wrong!'),),
             successWidget: () =>
                ListView.separated(
                 itemCount: controller.data!.length,
@@ -186,8 +186,8 @@ Before discoviring folders lets first perform some actions to make the project r
 
   <img src="preview_images/success_snackbar.jpg" width="170px">&nbsp;&nbsp;<img src="preview_images/fail_snackbar.jpg" width="170px">&nbsp;&nbsp;<img src="preview_images/success_toast.jpg" width="170px">&nbsp;&nbsp;<img src="preview_images/fail_toast.jpg" width="170px">
 
-## Discovring Project
-After setting up all the needed thing now lets talk about folder structure which is mainly based on Getx Pattern and thre are some personal opnions, if you open your lib folder you will find those folders
+## Discovering Project
+After setting up all the needed thing now lets talk about folder structure which is mainly based on Getx Pattern and there are some personal opinions, if you open your lib folder you will find those folders
 
 ```
 .
@@ -228,7 +228,7 @@ After setting up all the needed thing now lets talk about folder structure which
    
     ```
 
-  you only need to change app colors (light/dark_theme_colors) and if you want to change app fonts sizes and family just modify my_fonts.dart and that is it you dont need to worry about styles and theme you only need to edit my_syles.dart if you want to change some elemnt theme data (padding,border..etc) and if you want to change theme just use this code
+  you only need to change app colors (light/dark_theme_colors) and if you want to change app fonts sizes and family just modify my_fonts.dart and that is it you don't need to worry about styles and theme you only need to edit my_syles.dart if you want to change some element theme data (padding,border..etc) and if you want to change theme just use this code
 
     ```dart
     // change theme and save current theme state to shared pref
@@ -255,7 +255,7 @@ After setting up all the needed thing now lets talk about folder structure which
     Text('hello'.tr); // translated text 
   ```
 
-  but because we have so many words to translate we will seprate keys file (strings_enum.dart) and languages map into different classes so code will become like this
+  but because we have so many words to translate we will separate keys file (strings_enum.dart) and languages map into different classes so code will become like this
 
   ```dart
   class LocalizationService extends Translations {
@@ -307,7 +307,7 @@ After setting up all the needed thing now lets talk about folder structure which
     MySharedPref.getCurrentLocal();
     ```
 
-- Safe api call: under if you opned lib/app/services package you will find 3 files
+- Safe api call: under if you opened lib/app/services package you will find 3 files
   - api_call_status.dart: which contain all possible stages of our api call (loading,success,error..etc)
   - api_exception.dart: custom exception class to make error handling more informative
   - base_client.dart: contain our safe api call functions
@@ -334,8 +334,8 @@ class HomeController extends GetxController {
         apiCallStatus = ApiCallStatus.success;
         update(); // update ui
       },
-      // if you dont pass this method base client
-      // will automaticly handle error and show message
+      // if you don't pass this method base client
+      // will automatically handle error and show message
       onError: (error){
         // show error message to user
         BaseClient.handleApiError(error);
@@ -354,7 +354,7 @@ class HomeController extends GetxController {
 }
 ```
 
-base client will catch all the possible errors and if you didnt pass onError function it will automaticly catch the error in UI side code will be
+base client will catch all the possible errors and if you didn't pass onError function it will automatically catch the error in UI side code will be
 
 ```dart
 GetBuilder<HomeController>(
@@ -362,7 +362,7 @@ GetBuilder<HomeController>(
           return MyWidgetsAnimator(
               apiCallStatus: controller.apiCallStatus,
               loadingWidget: () => const Center(child: CircularProgressIndicator(),),
-              errorWidget: ()=> const Center(child: Text('Something went worng!'),),
+              errorWidget: ()=> const Center(child: Text('Something went wrong!'),),
               successWidget: () =>
                  ListView.separated(
                   itemCount: controller.data!.length,
@@ -377,7 +377,7 @@ GetBuilder<HomeController>(
         },
       )
 ```
-**NOTE:** MyWidgetsAnimator will take care of ui changing with animatino you will pass the ApiCallStatus and sucess,failed,loading..etc widgets and it will take care of transition
+**NOTE:** MyWidgetsAnimator will take care of ui changing with animation you will pass the ApiCallStatus and success,failed,loading..etc widgets and it will take care of transition
 
 ## Support
 
