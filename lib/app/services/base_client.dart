@@ -14,14 +14,14 @@ class BaseClient {
 
   // GET request
   static get(
-    String url, {
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? queryParameters,
-    required Function(Response response) onSuccess,
-    Function(ApiException)? onError,
-    Function(int value, int progress)? onReceiveProgress,
-    Function? onLoading,
-  }) async {
+      String url, {
+        Map<String, dynamic>? headers,
+        Map<String, dynamic>? queryParameters,
+        required Function(Response response) onSuccess,
+        Function(ApiException)? onError,
+        Function(int value, int progress)? onReceiveProgress,
+        Function? onLoading,
+      }) async {
     try {
       // 1) indicate loading state
       onLoading?.call();
@@ -35,31 +35,15 @@ class BaseClient {
       // 3) return response (api done successfully)
       await onSuccess(response);
     } on DioError catch (error) { // dio error (api reach the server but not performed successfully
-      // no internet connection
-      if(error.message.toLowerCase().contains('socket')){
-        onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
-      }
-
-      // no response
-      if(error.response == null){
-        var exception = ApiException(url: url, message: error.message,);
-        return onError?.call(exception) ?? handleApiError(exception);
-      }
-
-      // check if the error is 500 (server problem)
-      if(error.response?.statusCode == 500){
-        var exception = ApiException(message: Strings.serverError.tr, url: url, statusCode: 500,);
-        return onError?.call(exception) ?? handleApiError(exception);
-      }
+      _handleDioError(error: error, url: url,onError: onError);
     }on SocketException { // No internet connection
-      onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
+      _handleSocketException(url: url,onError: onError);
     } on TimeoutException { // Api call went out of time
-      onError?.call(ApiException(message: Strings.serverNotResponding.tr, url: url,)) ?? _handleError(Strings.serverNotResponding.tr);
+      _handleTimeoutException(url: url,onError: onError);
     } catch (error) { // unexpected error for example (parsing json error)
-      onError?.call(ApiException(message: error.toString(), url: url,)) ?? _handleError(error.toString());
+      _handleUnexpectedException(url: url,onError: onError,error: error);
     }
   }
-
 
   // POST request
   static post(
@@ -88,31 +72,13 @@ class BaseClient {
       // 3) return response (api done successfully)
       await onSuccess.call(response);
     } on DioError catch (error) { // dio error (api reach the server but not performed successfully
-      // no internet connection
-      if(error.message.toLowerCase().contains('socket')){
-        onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
-      }
-
-      // no response
-      if(error.response == null){
-        var exception = ApiException(url: url, message: error.message,);
-        return onError?.call(exception) ?? handleApiError(exception);
-      }
-
-      // check if the error is 500 (server problem)
-      if(error.response?.statusCode == 500){
-        var exception = ApiException(message: Strings.serverError.tr, url: url, statusCode: 500,);
-        return onError?.call(exception) ?? handleApiError(exception);
-      }
-
-      var exception = ApiException(message: error.message, url: url, statusCode: error.response?.statusCode ?? 404,);
-      return onError?.call(exception) ?? handleApiError(exception);
+      _handleDioError(error: error, url: url,onError: onError);
     }on SocketException { // No internet connection
-      onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
+      _handleSocketException(url: url,onError: onError);
     } on TimeoutException { // Api call went out of time
-      onError?.call(ApiException(message: Strings.serverNotResponding.tr, url: url,)) ?? _handleError(Strings.serverNotResponding.tr);
+      _handleTimeoutException(url: url,onError: onError);
     } catch (error) { // unexpected error for example (parsing json error)
-      onError?.call(ApiException(message: error.toString(), url: url,)) ?? _handleError(error.toString());
+      _handleUnexpectedException(url: url,onError: onError,error: error);
     }
   }
 
@@ -144,31 +110,13 @@ class BaseClient {
       // 3) return response (api done successfully)
       await onSuccess.call(response);
     } on DioError catch (error) { // dio error (api reach the server but not performed successfully
-      // no internet connection
-      if(error.message.toLowerCase().contains('socket')){
-        onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
-      }
-
-      // no response
-      if(error.response == null){
-        var exception = ApiException(url: url, message: error.message,);
-        return onError?.call(exception) ?? handleApiError(exception);
-      }
-
-      // check if the error is 500 (server problem)
-      if(error.response?.statusCode == 500){
-        var exception = ApiException(message: Strings.serverError.tr, url: url, statusCode: 500,);
-        return onError?.call(exception) ?? handleApiError(exception);
-      }
-
-      var exception = ApiException(message: error.message, url: url, statusCode: error.response?.statusCode ?? 404,);
-      return onError?.call(exception) ?? handleApiError(exception);
+      _handleDioError(error: error, url: url,onError: onError);
     }on SocketException { // No internet connection
-      onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
+      _handleSocketException(url: url,onError: onError);
     } on TimeoutException { // Api call went out of time
-      onError?.call(ApiException(message: Strings.serverNotResponding.tr, url: url,)) ?? _handleError(Strings.serverNotResponding.tr);
+      _handleTimeoutException(url: url,onError: onError);
     } catch (error) { // unexpected error for example (parsing json error)
-      onError?.call(ApiException(message: error.toString(), url: url,)) ?? _handleError(error.toString());
+      _handleUnexpectedException(url: url,onError: onError,error: error);
     }
   }
 
@@ -196,31 +144,13 @@ class BaseClient {
       // 3) return response (api done successfully)
       await onSuccess.call(response);
     } on DioError catch (error) { // dio error (api reach the server but not performed successfully
-      // no internet connection
-      if(error.message.toLowerCase().contains('socket')){
-        onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
-      }
-
-      // no response
-      if(error.response == null){
-        var exception = ApiException(url: url, message: error.message,);
-        return onError?.call(exception) ?? handleApiError(exception);
-      }
-
-      // check if the error is 500 (server problem)
-      if(error.response?.statusCode == 500){
-        var exception = ApiException(message: Strings.serverError.tr, url: url, statusCode: 500,);
-        return onError?.call(exception) ?? handleApiError(exception);
-      }
-
-      var exception = ApiException(message: error.message, url: url, statusCode: error.response?.statusCode ?? 404,);
-      return onError?.call(exception) ?? handleApiError(exception);
+      _handleDioError(error: error, url: url,onError: onError);
     }on SocketException { // No internet connection
-      onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
+      _handleSocketException(url: url,onError: onError);
     } on TimeoutException { // Api call went out of time
-      onError?.call(ApiException(message: Strings.serverNotResponding.tr, url: url,)) ?? _handleError(Strings.serverNotResponding.tr);
+      _handleTimeoutException(url: url,onError: onError);
     } catch (error) { // unexpected error for example (parsing json error)
-      onError?.call(ApiException(message: error.toString(), url: url,)) ?? _handleError(error.toString());
+      _handleUnexpectedException(url: url,onError: onError,error: error);
     }
   }
 
@@ -244,6 +174,39 @@ class BaseClient {
       var exception = ApiException(url: url, message: error.toString());
       onError?.call(exception) ?? _handleError(error.toString());
     }
+  }
+
+
+  /// handle unexpected error
+  static _handleUnexpectedException({Function(ApiException)? onError,required String url,required Object error}) {
+    onError?.call(ApiException(message: error.toString(), url: url,)) ?? _handleError(error.toString());
+  }
+
+  /// handle timeout exception
+  static _handleTimeoutException({Function(ApiException)? onError,required String url}) {
+    onError?.call(ApiException(message: Strings.serverNotResponding.tr, url: url,)) ?? _handleError(Strings.serverNotResponding.tr);
+  }
+
+  /// handle timeout exception
+  static _handleSocketException({Function(ApiException)? onError,required String url}) {
+    onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
+  }
+
+  /// handle Dio error
+  static _handleDioError({required DioError error,Function(ApiException)? onError,required String url}) {
+    // no internet connection
+    if(error.message.toLowerCase().contains('socket')){
+      return onError?.call(ApiException(message: Strings.noInternetConnection.tr, url: url,)) ?? _handleError(Strings.noInternetConnection.tr);
+    }
+
+    // check if the error is 500 (server problem)
+    if(error.response?.statusCode == 500){
+      var exception = ApiException(message: Strings.serverError.tr, url: url, statusCode: 500,);
+      return onError?.call(exception) ?? handleApiError(exception);
+    }
+
+    var exception = ApiException(url: url, message: error.message,response: error.response,statusCode: error.response?.statusCode);
+    return onError?.call(exception) ?? handleApiError(exception);
   }
 
 
