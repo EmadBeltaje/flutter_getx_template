@@ -16,15 +16,16 @@ class HomeController extends GetxController {
     apiCallStatus = ApiCallStatus.loading;
     update();
     // *) perform api call
-    await BaseClient.get(
+    await BaseClient.safeApiCall(
       Constants.todosApiUrl, // url
+      RequestType.get, // request type (get,post,delete,put)
       onSuccess: (response){ // api done successfully
         data = List.from(response.data);
         // -) indicate success state
         apiCallStatus = ApiCallStatus.success;
         update();
       },
-      // if you dont pass this method base client
+      // if you don't pass this method base client
       // will automaticly handle error and show message
       onError: (error){
         // show error message to user
