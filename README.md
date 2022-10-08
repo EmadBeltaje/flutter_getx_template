@@ -129,8 +129,9 @@ Before discovering folders lets first perform some actions to make the project r
           apiCallStatus = ApiCallStatus.loading;
           update();
           // *) perform api call
-          await BaseClient.get(
+          await BaseClient.safeApiCall(
             Constants.todosApiUrl, // url
+            RequestType.get, // request type (get,post,delete,put)
             onSuccess: (response){ // api done successfully
               data = List.from(response.data);
               // -) indicate success state
@@ -326,8 +327,9 @@ class HomeController extends GetxController {
     apiCallStatus = ApiCallStatus.loading;
     update();
     // *) perform api call
-    await BaseClient.get(
+    await BaseClient.safeApiCall(
       Constants.todosApiUrl, // url
+      RequestType.get,
       onSuccess: (response){ // api done successfully
         data = List.from(response.data);
         // -) indicate success state
