@@ -3,8 +3,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-
 import '../app/data/local/my_shared_pref.dart';
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+// IMPORTANT NOTE
+// if you have errors here (undefined or awesome notifications doesnt have this funcition)
+// this mean you are using old version of awesome notifications so you just need to go to
+// template on github and copy older version of fcm_helper.dart class and paste it here
+// link: https://github.com/EmadBeltaje/flutter_getx_template/commits/master/lib/utils/fcm_helper.dart
+// you can copy the hole file of initial commit and paste here and everything would be fine
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 class FcmHelper {
   // FCM Messaging
@@ -45,11 +55,10 @@ class FcmHelper {
 
   /// when user click on notification or click on button on the notification
   static listenToActionButtons() {
-    awesomeNotifications.actionStream.listen(
-      (ReceivedNotification receivedNotification) async {
-        // TODO make ur actions (open screen or sth)
-        // for ex:
-        //Get.toNamed(Routes.NOTIFICATIONS)
+    awesomeNotifications.setListeners(onActionReceivedMethod: (ReceivedNotification receivedNotification) async {
+      // TODO make ur actions (open screen or sth)
+      // for ex:
+      //Get.toNamed(Routes.NOTIFICATIONS)
       },
     );
   }
@@ -117,14 +126,14 @@ class FcmHelper {
   //display notification for user with sound
   static _showNotification(
       {required String title,
-      required String body,
-      required int id,
-      String? channelKey,
-      String? groupKey,
-      NotificationLayout? notificationLayout,
-      String? summary,
-      Map<String, String>? payload,
-      String? largeIcon}) async {
+        required String body,
+        required int id,
+        String? channelKey,
+        String? groupKey,
+        NotificationLayout? notificationLayout,
+        String? summary,
+        Map<String, String>? payload,
+        String? largeIcon}) async {
     awesomeNotifications.isNotificationAllowed().then((isAllowed) {
       if (!isAllowed) {
         awesomeNotifications.requestPermissionToSendNotifications();
@@ -139,7 +148,7 @@ class FcmHelper {
             channelKey: channelKey ?? NotificationChannels.generalChannelKey,
             showWhen: true, // Hide/show the time elapsed since notification was displayed
             payload: payload, // data of the notification (it will be used when user clicks on notification)
-            notificationLayout: notificationLayout, // notification shape (message,media player..etc) For ex => NotificationLayout.Messaging
+            notificationLayout: notificationLayout ?? NotificationLayout.Default, // notification shape (message,media player..etc) For ex => NotificationLayout.Messaging
             autoDismissible: true, // dismiss notification when user clicks on it
             summary: summary, // for ex: New message (it will be shown on status bar before notificaiton shows up)
             largeIcon: largeIcon, // image of sender for ex (when someone send you message his image will be shown)
@@ -181,11 +190,11 @@ class FcmHelper {
 
         channelGroups: [
           NotificationChannelGroup(
-            channelGroupkey: NotificationChannels.generalChannelGroupKey,
+            channelGroupKey: NotificationChannels.generalChannelGroupKey,
             channelGroupName: NotificationChannels.generalChannelGroupName,
           ),
           NotificationChannelGroup(
-            channelGroupkey: NotificationChannels.chatChannelGroupKey,
+            channelGroupKey: NotificationChannels.chatChannelGroupKey,
             channelGroupName: NotificationChannels.chatChannelGroupName,
           )
         ]);
