@@ -120,18 +120,23 @@ Before discovering folders lets first perform some actions to make the project r
 - Safe api call
   - logic code (in controller)
       ```dart
-          // api call status
+        // hold data coming from api
+        List<dynamic> data;
+    
+        // api call status
         ApiCallStatus apiCallStatus = ApiCallStatus.holding;
 
-        // getting data from api simulating
+        // getting data from api
         getData() async {
-          // *) indicate loading state
-          apiCallStatus = ApiCallStatus.loading;
-          update();
           // *) perform api call
           await BaseClient.safeApiCall(
             Constants.todosApiUrl, // url
-            RequestType.get, // request type (get,post,delete,put)
+            RequestType.get, // request type (get,post,delete,put),
+            onLoading: () {
+              // *) indicate loading state
+              apiCallStatus = ApiCallStatus.loading;
+              update();
+            },
             onSuccess: (response){ // api done successfully
               data = List.from(response.data);
               // -) indicate success state
@@ -139,14 +144,14 @@ Before discovering folders lets first perform some actions to make the project r
               update(); // update ui
             },
             // if you don't pass this method base client
-            // will automatically handle error and show message
+            // will automatically handle error and show error message to user
             onError: (error){
               // show error message to user
               BaseClient.handleApiError(error);
               // -) indicate error status
               apiCallStatus = ApiCallStatus.error;
               update(); // update ui
-            }, // error while performing request
+            },
           );
         }
       ```
