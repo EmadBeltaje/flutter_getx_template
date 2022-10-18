@@ -125,31 +125,40 @@ class BaseClient {
       {Function(ApiException)? onError,
         required String url,
         required Object error}) {
-    onError?.call(ApiException(
-      message: error.toString(),
-      url: url,
-    )) ??
-        _handleError(error.toString());
+    if (onError != null) {
+      onError(ApiException(
+        message: error.toString(),
+        url: url,
+      ));
+    } else {
+      _handleError(error.toString());
+    }
   }
 
   /// handle timeout exception
   static _handleTimeoutException(
       {Function(ApiException)? onError, required String url}) {
-    onError?.call(ApiException(
-      message: Strings.serverNotResponding.tr,
-      url: url,
-    )) ??
-        _handleError(Strings.serverNotResponding.tr);
+    if (onError != null) {
+      onError(ApiException(
+        message: Strings.serverNotResponding.tr,
+        url: url,
+      ));
+    } else {
+      _handleError(Strings.serverNotResponding.tr);
+    }
   }
 
   /// handle timeout exception
   static _handleSocketException(
       {Function(ApiException)? onError, required String url}) {
-    onError?.call(ApiException(
-      message: Strings.noInternetConnection.tr,
-      url: url,
-    )) ??
-        _handleError(Strings.noInternetConnection.tr);
+    if (onError != null) {
+      onError(ApiException(
+        message: Strings.noInternetConnection.tr,
+        url: url,
+      ));
+    } else {
+      _handleError(Strings.noInternetConnection.tr);
+    }
   }
 
   /// handle Dio error
@@ -159,11 +168,14 @@ class BaseClient {
         required String url}) {
     // no internet connection
     if (error.message.toLowerCase().contains('socket')) {
-      return onError?.call(ApiException(
-        message: Strings.noInternetConnection.tr,
-        url: url,
-      )) ??
-          _handleError(Strings.noInternetConnection.tr);
+      if (onError != null) {
+        return onError(ApiException(
+          message: Strings.noInternetConnection.tr,
+          url: url,
+        ));
+      } else {
+        return _handleError(Strings.noInternetConnection.tr);
+      }
     }
 
     // check if the error is 500 (server problem)
@@ -173,7 +185,12 @@ class BaseClient {
         url: url,
         statusCode: 500,
       );
-      return onError?.call(exception) ?? handleApiError(exception);
+
+      if (onError != null) {
+        return onError(exception);
+      } else {
+        return handleApiError(exception);
+      }
     }
 
     var exception = ApiException(
@@ -181,7 +198,11 @@ class BaseClient {
         message: error.message,
         response: error.response,
         statusCode: error.response?.statusCode);
-    return onError?.call(exception) ?? handleApiError(exception);
+    if (onError != null) {
+      return onError(exception);
+    } else {
+      return handleApiError(exception);
+    }
   }
 
   /// handle error automaticly (if user didnt pass onError) method
@@ -197,3 +218,4 @@ class BaseClient {
     CustomSnackBar.showCustomErrorToast(message: msg);
   }
 }
+
