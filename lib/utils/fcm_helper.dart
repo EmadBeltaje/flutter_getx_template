@@ -2,8 +2,10 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import '../app/data/local/my_shared_pref.dart';
+import '../app/routes/app_pages.dart';
 
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
@@ -46,7 +48,7 @@ class FcmHelper {
       FirebaseMessaging.onMessage.listen(_fcmForegroundHandler);
       FirebaseMessaging.onBackgroundMessage(_fcmBackgroundHandler);
 
-      // listen to notifications clicks
+      // listen to notifications click and actions
       listenToActionButtons();
     } catch (error) {
       print(error);
@@ -55,11 +57,12 @@ class FcmHelper {
 
   /// when user click on notification or click on button on the notification
   static listenToActionButtons() {
-    awesomeNotifications.setListeners(onActionReceivedMethod: (ReceivedNotification receivedNotification) async {
-      // TODO make ur actions (open screen or sth)
-      // for ex:
-      //Get.toNamed(Routes.NOTIFICATIONS)
-      },
+    // Only after at least the action method is set, the notification events are delivered
+    awesomeNotifications.setListeners(
+        onActionReceivedMethod:         NotificationController.onActionReceivedMethod,
+        onNotificationCreatedMethod:    NotificationController.onNotificationCreatedMethod,
+        onNotificationDisplayedMethod:  NotificationController.onNotificationDisplayedMethod,
+        onDismissActionReceivedMethod:  NotificationController.onDismissActionReceivedMethod
     );
   }
 
@@ -218,3 +221,34 @@ class NotificationChannels {
   static String get generalChannelName => "Fitness notifications channels";
   static String get generalChannelDescription => "Notification channel for messages";
 }
+
+class NotificationController {
+
+  /// Use this method to detect when a new notification or a schedule is created
+  @pragma("vm:entry-point")
+  static Future <void> onNotificationCreatedMethod(ReceivedNotification receivedNotification) async {
+    // Your code goes here
+  }
+
+  /// Use this method to detect every time that a new notification is displayed
+  @pragma("vm:entry-point")
+  static Future <void> onNotificationDisplayedMethod(ReceivedNotification receivedNotification) async {
+    // Your code goes here
+  }
+
+  /// Use this method to detect if the user dismissed a notification
+  @pragma("vm:entry-point")
+  static Future <void> onDismissActionReceivedMethod(ReceivedAction receivedAction) async {
+    // Your code goes here
+  }
+
+  /// Use this method to detect when the user taps on a notification or action button
+  @pragma("vm:entry-point")
+  static Future <void> onActionReceivedMethod(ReceivedAction receivedAction) async {
+    // Your code goes here
+
+    // Navigate into pages, avoiding to open the notification details page over another details page already opened
+    Get.to(Routes.HOME);
+  }
+}
+
