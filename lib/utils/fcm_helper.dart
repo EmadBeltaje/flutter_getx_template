@@ -109,6 +109,9 @@ class FcmHelper {
   }
 
   ///handle fcm notification when app is closed/terminated
+  /// if you are wondering about this annotation read the following
+  /// https://stackoverflow.com/a/67083337
+  @pragma('vm:entry-point')
   static Future<void> _fcmBackgroundHandler(RemoteMessage message) async {
     _showNotification(
       id: 1,
