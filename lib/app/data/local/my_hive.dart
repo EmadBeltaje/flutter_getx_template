@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:logger/logger.dart';
 
 import '../models/user_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -27,11 +26,12 @@ class MyHive {
   }
 
   /// save user to database
-  static Future<void> saveUserToHive(UserModel user) async {
+  static Future<bool> saveUserToHive(UserModel user) async {
     try {
       await _userBox.put(_currentUserKey, user);
+      return true;
     } catch (error) {
-      Logger().e('Hive Error => ${error}');
+      return false;
     }
   }
 
@@ -44,9 +44,12 @@ class MyHive {
     }
   }
 
-  static Future<void> deleteCurrentUser() async {
+  static Future<bool> deleteCurrentUser() async {
     try {
       await _userBox.delete(_currentUserKey);
-    } catch (error) {}
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }
