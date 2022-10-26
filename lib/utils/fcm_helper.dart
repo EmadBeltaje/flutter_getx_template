@@ -18,6 +18,24 @@ import '../app/routes/app_pages.dart';
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
+
+
+//////////////////////////////////////////////////////////
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// DUPLICATED NOTIFICATION ISSUE
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// you may get 2 notifications shown while you only sent 1 but why ?
+// simply bcz one notification is from fcm and the other one is from us (awesome notification)
+// but what does that mean!
+// if you take a look here at this link https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages
+// you will know that notifications are 2 types
+// - Notification message (which automatically show notification which lead to duplicated)
+// - Data message (dont show notification so you must show it using awesome notifications)
+// so if you want to get rid of duplicated notifications just stop sending (Notification message) and start sending (data message) instead
+// and this is in most of time (api developer) responsibility
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
 class FcmHelper {
   // FCM Messaging
   static late FirebaseMessaging messaging;
@@ -30,7 +48,7 @@ class FcmHelper {
     try {
       // initialize fcm and firebase core
       await Firebase.initializeApp(
-        //  only un comment this line if you set up firebase vie firebase cli
+        // TODO: uncomment this line if you connected to firebase via cli
         //options: DefaultFirebaseOptions.currentPlatform,
       );
       messaging = FirebaseMessaging.instance;
@@ -51,7 +69,10 @@ class FcmHelper {
       // listen to notifications click and actions
       listenToActionButtons();
     } catch (error) {
-      print(error);
+      // if you are connected to firebase and still get error
+      // check the todo up in the function else ignore the error
+      // or stop fcm service from main.dart class
+      Logger().e(error);
     }
   }
 
@@ -88,6 +109,8 @@ class FcmHelper {
   static Future<void> _generateFcmToken() async {
     try {
       var token = await messaging.getToken();
+      Logger().e(token);
+      print(token);
       if(token != null){
         MySharedPref.setFcmToken(token);
         _sendFcmTokenToServer();
@@ -117,6 +140,7 @@ class FcmHelper {
       id: 1,
       title: message.notification?.title ?? 'Tittle',
       body: message.notification?.body ?? 'Body',
+      payload: message.data.cast(), // pass payload to the notification card so you can use it (when user click on notification)
     );
   }
 
@@ -126,6 +150,7 @@ class FcmHelper {
       id: 1,
       title: message.notification?.title ?? 'Tittle',
       body: message.notification?.body ?? 'Body',
+      payload: message.data.cast(), // pass payload to the notification card so you can use it (when user click on notification)
     );
   }
 
@@ -248,9 +273,10 @@ class NotificationController {
   /// Use this method to detect when the user taps on a notification or action button
   @pragma("vm:entry-point")
   static Future <void> onActionReceivedMethod(ReceivedAction receivedAction) async {
-    // Your code goes here
-
-    // Navigate into pages, avoiding to open the notification details page over another details page already opened
+    Map<String,String?>? payload = receivedAction.payload;
+    Logger().e(payload);
+    // example
+    // String routeToGetTo = payload['route'];
     Get.to(Routes.HOME);
   }
 }
