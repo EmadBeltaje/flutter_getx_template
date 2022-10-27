@@ -17,9 +17,10 @@ Future<void> main() async {
 
   // initialize local db (hive) and register our custom adapters
   await MyHive.init(
-      adapters: [
-        UserModelAdapter()
-      ]
+      registerAdapters: (hive) {
+        hive.registerAdapter(UserModelAdapter());
+        //myHive.registerAdapter(OtherAdapter());
+      }
   );
 
   // init shared preference

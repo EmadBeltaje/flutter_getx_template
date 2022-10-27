@@ -12,11 +12,9 @@ class MyHive {
   static const String _currentUserKey = 'local_user';
 
   /// initialize local db (HIVE)
-  static init({List<TypeAdapter>? adapters}) async {
+  static Future<void> init({Function(HiveInterface)? registerAdapters}) async {
     await Hive.initFlutter();
-    adapters?.forEach((adapter) {
-      Hive.registerAdapter(adapter);
-    });
+    await registerAdapters?.call(Hive);
     await _initUserBox();
   }
 
