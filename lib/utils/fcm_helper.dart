@@ -277,7 +277,8 @@ class NotificationController {
     Logger().e(payload);
     // example
     // String routeToGetTo = payload['route'];
-    Get.to(Routes.HOME);
+    // normal navigation (Get.toNamed) will throw error
+    Get.key.currentState?.pushNamed(Routes.HOME);
   }
 }
 
