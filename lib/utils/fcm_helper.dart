@@ -274,7 +274,7 @@ class NotificationController {
   @pragma("vm:entry-point")
   static Future <void> onActionReceivedMethod(ReceivedAction receivedAction) async {
     Map<String,String?>? payload = receivedAction.payload;
-    Logger().e(payload);
+    // TODO handle clicking on notification
     // example
     // String routeToGetTo = payload['route'];
     // normal navigation (Get.toNamed) will throw error

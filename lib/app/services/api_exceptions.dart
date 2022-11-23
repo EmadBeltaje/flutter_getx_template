@@ -23,7 +23,7 @@ class ApiException implements Exception {
     // if server sent error message take it
     if(response != null){
       try{
-        // TODO add error message field which is coming from api for you
+        // TODO add error message field which is coming from api for you (For ex: response.data['error']['message']
         result += response!.data['message'];
       }catch(_){}
     }else {

@@ -31,7 +31,7 @@ Future<void> main() async {
 
   runApp(
     ScreenUtilInit(
-      // xd art board size
+      // todo add your (Xd / Figma) artboard size
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
@@ -39,6 +39,7 @@ Future<void> main() async {
       rebuildFactor: (old, data) => true,
       builder: (context, widget) {
         return GetMaterialApp(
+              // todo add your app name
               title: "GetXSkeleton",
               useInheritedMediaQuery: true,
               debugShowCheckedModeBanner: false,

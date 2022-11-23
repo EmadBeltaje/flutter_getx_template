@@ -5,7 +5,7 @@ import '../../../config/translations/localization_service.dart';
 
 class MySharedPref {
   // get storage
-  static late final _storage;
+  static late final GetStorage _storage;
 
   // STORING KEYS
   static const String _fcmTokenKey = 'fcm_token';
@@ -24,7 +24,7 @@ class MySharedPref {
 
   /// get if the current theme type is light
   static bool getThemeIsLight() =>
-     _storage.read(_lightThemeKey) ?? true;
+     _storage.read(_lightThemeKey) ?? true; // todo set the default theme (true for light, false for dark)
 
   /// save current locale
   static void setCurrentLanguage(String languageCode) =>

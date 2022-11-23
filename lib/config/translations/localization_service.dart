@@ -7,6 +7,7 @@ import 'en_US/en_us_translation.dart';
 
 class LocalizationService extends Translations {
   // default language
+  // todo change the default language
   static Locale defaultLanguage = supportedLanguages['en']!;
 
   // supported languages
@@ -17,6 +18,7 @@ class LocalizationService extends Translations {
 
   // supported languages fonts family (must be in assets & pubspec yaml) or you can use google fonts
   static Map<String,TextStyle> supportedLanguagesFontsFamilies = {
+    // todo add your English font families (add to assets/fonts, pubspec and name it here) default is poppins for english and cairo for arabic
     'en' : const TextStyle(fontFamily: 'Poppins'),
     'ar': const TextStyle(fontFamily: 'Cairo'),
   };

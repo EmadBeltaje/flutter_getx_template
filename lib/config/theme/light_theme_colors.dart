@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+// TODO add your light theme colors palette
 class LightThemeColors
 {
   //dark swatch
