@@ -20,14 +20,12 @@ class ApiException implements Exception {
   @override
   toString() {
     String result = '';
-    // if server sent error message take it
-    if(response != null){
-      try{
-        // TODO add error message field which is coming from api for you (For ex: response.data['error']['message']
-        result += response!.data['message'];
-      }catch(_){}
-    }else {
-      result += ' ' + message; // message is the (dio error message) so usualy its not user friendly
+
+    // TODO add error message field which is coming from api for you (For ex: response.data['error']['message']
+    result += response?.data['error'] ?? '';
+
+    if(result.isEmpty){
+      result += message; // message is the (dio error message) so usualy its not user friendly
     }
 
     return result;
