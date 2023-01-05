@@ -7,36 +7,39 @@ environment:
 
 dependencies: 
   cupertino_icons:
-  get: # for state managment and context less stuff
+  get: # for state management and context less stuff
 
   logger: # log events in clear way insted of (print)
 
   flutter_screenutil: # make app responsive
 
   dio: # for api requests
+  http_mock_adapter: # mocking dio for testing
   pretty_dio_logger: # for dio api logging and debugging
 
   hive:  # local database (SQFlite replacement)
   hive_flutter: # make it easy to use hive (no need for path provider)
-  get_storage: # shared preferences replacement (sync)
+  shared_preferences: # shared preferences persistence key value store
 
   firebase_core:  # to initialize firebase services
   firebase_messaging:  # fcm services
-  awesome_notifications: # notifications services (will be used for fcm)
+  awesome_notifications: ^0.7.4+1 # notifications services (will be used for fcm)
 
   flutter_launcher_icons: # change app icon
   change_app_package_name: # change package name
   rename_app: # rename app
 
-
-
   flutter: 
     sdk: flutter
 
-dev_dependencies: 
+dev_dependencies:
+  mockito:
   flutter_lints:
   build_runner:  # generate dart files
   hive_generator: # generate hive files
+
+  integration_test:
+    sdk: flutter
 
   flutter_test: 
     sdk: flutter
