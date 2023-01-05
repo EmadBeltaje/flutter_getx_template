@@ -22,7 +22,7 @@ class ApiException implements Exception {
     String result = '';
 
     // TODO add error message field which is coming from api for you (For ex: response.data['error']['message']
-    result += response?.data['error'] ?? '';
+    result += response?.data?['error'] ?? '';
 
     if(result.isEmpty){
       result += message; // message is the (dio error message) so usualy its not user friendly
