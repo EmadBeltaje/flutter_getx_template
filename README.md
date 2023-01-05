@@ -17,6 +17,20 @@ We all face the same problem when we want to start a new project we have to take
 - Making app more responsive and stop font scaling ⚖️
   This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
 
+## What is new 🌟
+
+- [x] Separate Local Notification helper from fcm helper 🛠️
+- [x] Integration Test for BaseClient 🧪
+- [x] Integration Test for Awesome Notifications Helper 🧪
+- [x] Integration Test for Widget Animator 🧪
+- [x] Unit Test also for BaseClient 🧪
+- [x] Unit Test for MySharedPreference 🧪
+- [x] Unit Test for MyHive 🧪
+- [x] Unit Test for Localization Service 🧪
+- [x] Replace get_storage with SharedPref (unsolved testing problems with get_storage) 📦️
+- [x] Refactor Code 🛠️
+- [ ] Support Web (in progress) 💡
+
 ## Acknowledgment
 Project was created using [get_cli](https://pub.dev/packages/get_cli) which is a great tool helping you to (start project,create screens/controllers, handling DI)..etc and we will list other packages that helped to create this skeleton
 - [GetX](https://pub.dev/packages/get) for state management,navigation,managing dependencies..etc
