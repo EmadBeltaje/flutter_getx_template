@@ -6,6 +6,16 @@ import 'ar_AR/ar_ar_translation.dart';
 import 'en_US/en_us_translation.dart';
 
 class LocalizationService extends Translations {
+  // prevent creating instance
+  LocalizationService._();
+
+  static LocalizationService? _instance;
+
+  static LocalizationService getInstance() {
+    _instance ??= LocalizationService._();
+    return _instance!;
+  }
+
   // default language
   // todo change the default language
   static Locale defaultLanguage = supportedLanguages['en']!;
@@ -39,8 +49,10 @@ class LocalizationService extends Translations {
     // check if the language is supported
     if(!isLanguageSupported(languageCode)) return;
     // update current language in shared pref
-    MySharedPref.setCurrentLanguage(languageCode);
-    await Get.updateLocale(supportedLanguages[languageCode]!);
+    await MySharedPref.setCurrentLanguage(languageCode);
+    if(!Get.testMode) {
+      Get.updateLocale(supportedLanguages[languageCode]!);
+    }
   }
 
   /// check if the language is english
