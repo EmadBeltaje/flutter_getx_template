@@ -18,30 +18,33 @@ enum RequestType {
 
 class BaseClient {
   static final Dio _dio = Dio()
-    ..interceptors.add(PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-      responseBody: true,
-      responseHeader: false,
-      error: true,
-      compact: true,
-      maxWidth: 90,
-    ));
+  ..interceptors.add(PrettyDioLogger(
+    requestHeader: true,
+    requestBody: true,
+    responseBody: true,
+    responseHeader: false,
+    error: true,
+    compact: true,
+    maxWidth: 90,
+  ));
 
-  // request request
+  /// dio getter (used for testing)
+  static get dio => _dio;
+
+  /// perform safe api request
   static safeApiCall(
-      String url,
-      RequestType requestType, {
-        Map<String, dynamic>? headers,
-        Map<String, dynamic>? queryParameters,
-        required Function(Response response) onSuccess,
-        Function(ApiException)? onError,
-        Function(int value, int progress)? onReceiveProgress,
-        Function(int total, int progress)?
+    String url,
+    RequestType requestType, {
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? queryParameters,
+    required Function(Response response) onSuccess,
+    Function(ApiException)? onError,
+    Function(int value, int progress)? onReceiveProgress,
+    Function(int total, int progress)?
         onSendProgress, // while sending (uploading) progress
-        Function? onLoading,
-        dynamic data,
-      }) async {
+    Function? onLoading,
+    dynamic data,
+  }) async {
     try {
       // 1) indicate loading state
       await onLoading?.call();
@@ -102,10 +105,10 @@ class BaseClient {
   /// download file
   static download(
       {required String url, // file url
-        required String savePath, // where to save file
-        Function(ApiException)? onError,
-        Function(int value, int progress)? onReceiveProgress,
-        required Function onSuccess}) async {
+      required String savePath, // where to save file
+      Function(ApiException)? onError,
+      Function(int value, int progress)? onReceiveProgress,
+      required Function onSuccess}) async {
     try {
       await _dio.download(
         url,
@@ -123,8 +126,8 @@ class BaseClient {
   /// handle unexpected error
   static _handleUnexpectedException(
       {Function(ApiException)? onError,
-        required String url,
-        required Object error}) {
+      required String url,
+      required Object error}) {
     if (onError != null) {
       onError(ApiException(
         message: error.toString(),
@@ -164,8 +167,21 @@ class BaseClient {
   /// handle Dio error
   static _handleDioError(
       {required DioError error,
-        Function(ApiException)? onError,
-        required String url}) {
+      Function(ApiException)? onError,
+      required String url}) {
+    // 404 error
+    if (error.response?.statusCode == 404) {
+      if (onError != null) {
+        return onError(ApiException(
+          message: Strings.urlNotFound.tr,
+          url: url,
+          statusCode: 404,
+        ));
+      } else {
+        return _handleError(Strings.urlNotFound.tr);
+      }
+    }
+
     // no internet connection
     if (error.message.toLowerCase().contains('socket')) {
       if (onError != null) {
@@ -207,7 +223,7 @@ class BaseClient {
 
   /// handle error automaticly (if user didnt pass onError) method
   /// it will try to show the message from api if there is no message
-  /// from api it will show the reason
+  /// from api it will show the reason (the dio message)
   static handleApiError(ApiException apiException) {
     String msg = apiException.toString();
     CustomSnackBar.showCustomErrorToast(message: msg);
@@ -218,4 +234,3 @@ class BaseClient {
     CustomSnackBar.showCustomErrorToast(message: msg);
   }
 }
-
