@@ -36,7 +36,7 @@ Project was created using [get_cli](https://pub.dev/packages/get_cli) which is a
 - [GetX](https://pub.dev/packages/get) for state management,navigation,managing dependencies..etc
 - [flutter_screenutil](https://pub.dev/packages/flutter_screenutil) to make app more responsive
 - [hive](https://pub.dev/packages/hive) as local database
-- [get_storage](https://pub.dev/packages/get_storage) as shared pref (its more easy and it read data sync)
+- [shared_preferences](https://pub.dev/packages/shared_preferences) store data persistently as key/value
 - [awesome_notifications](https://pub.dev/packages/awesome_notifications) for local notification
 ## Clone and start project
 Before discovering folders lets first perform some actions to make the project ready to launch
