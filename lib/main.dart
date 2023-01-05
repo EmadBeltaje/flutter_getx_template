@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_skeleton/utils/awesome_notifications_helper.dart';
 
 import 'app/data/local/my_hive.dart';
 import 'app/data/local/my_shared_pref.dart';
@@ -26,8 +27,11 @@ Future<void> main() async {
   // init shared preference
   await MySharedPref.init();
 
-  // inti fcm & notifications services (awesome notifications)
+  // inti fcm services
   await FcmHelper.initFcm();
+
+  // initialize local notifications service
+  await AwesomeNotificationsHelper.init();
 
   runApp(
     ScreenUtilInit(
@@ -58,7 +62,7 @@ Future<void> main() async {
               initialRoute: AppPages.INITIAL, // first screen to show when app is running
               getPages: AppPages.routes, // app screens
               locale: MySharedPref.getCurrentLocal(), // app language
-              translations: LocalizationService(), // localization services in app (controller app language)
+              translations: LocalizationService.getInstance(), // localization services in app (controller app language)
             );
       },
     ),
