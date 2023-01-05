@@ -12,5 +12,5 @@ const Map<String, String> enUs = {
   Strings.someThingWentWorng : 'Something went wrong',
   Strings.apiNotFound : 'Route not found!',
   Strings.serverError : 'Server error',
-
+  Strings.urlNotFound : 'Url not found',
 };

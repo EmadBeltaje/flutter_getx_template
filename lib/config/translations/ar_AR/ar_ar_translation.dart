@@ -13,4 +13,5 @@ final Map<String, String> arAR =
   Strings.someThingWentWorng : 'حدث خطأ غير متوقع!',
   Strings.apiNotFound : 'الرابط الذي تحاول الوصول اليه غير موجود!',
   Strings.serverError : 'مشكلة من السيرفر',
+  Strings.urlNotFound : 'مشكلة في الرابط',
 };
