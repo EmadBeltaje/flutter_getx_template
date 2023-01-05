@@ -13,7 +13,7 @@ class MyWidgetsAnimator extends StatelessWidget {
   final Widget Function()? holdingWidget;
   final Widget Function()? refreshWidget;
   final Duration? animationDuration;
-  final Widget Function(Widget, Animation)? transitionBuilder;
+  final Widget Function(Widget, Animation<double>)? transitionBuilder;
   // this will be used to not hide the success widget when refresh
   // if its true success widget will still be shown
   // if false refresh widget will be shown or empty box if passed (refreshWidget) is null
