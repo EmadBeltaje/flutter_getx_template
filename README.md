@@ -1,7 +1,7 @@
 
 # Flutter GetX Template
 
-Flutter Getx template to make starting project fast and easy
+Flutter Getx template: Starting up new project with all needed configuration has never been easier.
 .
 
 ## Introduction
