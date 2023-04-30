@@ -175,8 +175,6 @@ Before discovering folders lets first perform some actions to make the project r
       ```dart
       GetBuilder<HomeController>(
       builder: (controller){
-        LocalizationService.updateLanguage('en');
-        LocalizationService.getCurrentLocal();
         return MyWidgetsAnimator(
             apiCallStatus: controller.apiCallStatus,
             loadingWidget: () => const Center(child: CircularProgressIndicator(),),
