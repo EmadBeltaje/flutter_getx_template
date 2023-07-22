@@ -16,6 +16,14 @@ We all face the same problem when we want to start a new project we have to take
 - Making app more responsive and stop font scaling ⚖️
   This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
 
+## Upcoming Updates 🚀
+- [ ] Update to latest flutter version 
+- [ ] Update Theme classes
+- [ ] Update safe api call class
+- [ ] Refactor Code
+- [ ] Update Example 
+
+
 ## What is new 🌟
 
 - [x] Separate Local Notification helper from fcm helper 🛠️
