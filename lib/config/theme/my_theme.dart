@@ -11,18 +11,30 @@ class MyTheme {
     return ThemeData(
         // main color (app bar,tabs..etc)
         primaryColor: isLight ? LightThemeColors.primaryColor : DarkThemeColors.primaryColor,
-        // secondary color (for checkbox,float button, radio..etc)
-        accentColor: isLight ? LightThemeColors.accentColor : DarkThemeColors.accentColor,
+
+        // secondary & background color
+        colorScheme: ColorScheme.fromSwatch(
+            accentColor: isLight ? LightThemeColors.accentColor : DarkThemeColors.accentColor,
+            backgroundColor: isLight ? LightThemeColors.backgroundColor : DarkThemeColors.backgroundColor,
+            brightness: isLight ? Brightness.light : Brightness.dark,
+        )
+        .copyWith(
+            secondary: isLight ? LightThemeColors.accentColor : DarkThemeColors.accentColor,
+        ),
+
         // color contrast (if the theme is dark text should be white for example)
         brightness: isLight ? Brightness.light : Brightness.dark,
+
         // card widget background color
         cardColor: isLight ? LightThemeColors.cardColor : DarkThemeColors.cardColor,
+
         // hint text color
         hintColor: isLight ? LightThemeColors.hintTextColor : DarkThemeColors.hintTextColor,
+
         // divider color
         dividerColor: isLight ? LightThemeColors.dividerColor : DarkThemeColors.dividerColor,
+
         // app background color
-        backgroundColor: isLight ? LightThemeColors.backgroundColor : DarkThemeColors.backgroundColor,
         scaffoldBackgroundColor: isLight ? LightThemeColors.scaffoldBackgroundColor : DarkThemeColors.scaffoldBackgroundColor,
 
         // progress bar theme
@@ -44,6 +56,10 @@ class MyTheme {
 
         // icon theme
         iconTheme: MyStyles.getIconTheme(isLightTheme: isLight),
+
+        // list tile theme
+        listTileTheme: MyStyles.getListTileThemeData(isLightTheme: isLight),
+
     );
   }
 
@@ -52,8 +68,10 @@ class MyTheme {
   static changeTheme(){
     // *) check if the current theme is light (default is light)
     bool isLightTheme = MySharedPref.getThemeIsLight();
+
     // *) store the new theme mode on get storage
     MySharedPref.setThemeIsLight(!isLightTheme);
+
     // *) let GetX change theme
     Get.changeThemeMode(!isLightTheme ? ThemeMode.light : ThemeMode.dark);
   }
