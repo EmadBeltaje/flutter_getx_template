@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 // TODO add your light theme colors palette
 class LightThemeColors
 {
-  //dark swatch
-  static const Color primaryColor = Color(0xFF40A76A);
+  // PRIMARY
+  static const Color primaryColor = Color(0xFF42A7DE);
+
+  // SECONDARY COLOR
   static const Color accentColor = Color(0xFFD9EDE1);
 
   //APPBAR
@@ -29,8 +31,8 @@ class LightThemeColors
 
   //TEXT
   static const Color bodyTextColor = Colors.black;
-  static const Color headlinesTextColor = Colors.black;
-  static const Color captionTextColor = Colors.grey;
+  static const Color displayTextColor = Color(0xFF1E2432);
+  static const Color bodySmallTextColor = Color(0xff7C7C7C);
   static const Color hintTextColor =  Color(0xff686868);
 
   //chip
@@ -39,4 +41,14 @@ class LightThemeColors
 
   // progress bar indicator
   static const Color progressIndicatorColor = Color(0xFF40A76A);
+
+  // list tile
+  static const Color listTileTitleColor = Color(0xFF575757);
+  static const Color listTileSubtitleColor = Color(0xFF575757);
+  static const Color listTileBackgroundColor = Color(0xFFF8F8F8);
+  static const Color listTileIconColor = Color(0xFF575757);
+
+  //------------------- custom theme (extensions) ------------------- //
+  // header containers
+  static const Color headerContainerBackgroundColor = Color(0XFF38B6F0);
 }

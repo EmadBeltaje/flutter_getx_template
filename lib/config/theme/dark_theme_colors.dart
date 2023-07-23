@@ -4,16 +4,18 @@ import 'package:flutter/cupertino.dart';
 // TODO add your dark theme colors palette
 class DarkThemeColors
 {
-  //dark swatch
-  static const Color primaryColor = Colors.orange;
+  // PRIMARY
+  static const Color primaryColor = Color(0xFFFF8C00);
+
+  // SECONDARY
   static Color accentColor = Colors.blueAccent;
 
   //Appbar
   static const Color appbarColor = Colors.black;
 
   //SCAFFOLD
-  static const Color scaffoldBackgroundColor = Color(0xff171d2d);
-  static const Color backgroundColor = Color(0xff171d2d);
+  static const Color scaffoldBackgroundColor = Color(0xff2D2D2D);
+  static const Color backgroundColor = Color(0xff2D2D2D);
   static const Color dividerColor = Color(0xff686868);
   static const Color cardColor = Color(0xff1e2336);
 
@@ -29,8 +31,8 @@ class DarkThemeColors
 
   //TEXT
   static const Color bodyTextColor = Colors.white70;
-  static const Color headlinesTextColor = primaryColor;
-  static const Color captionTextColor = Colors.grey;
+  static const Color displayTextColor = Colors.white;
+  static const Color bodySmallTextColor =  Color(0xff7C7C7C);
   static const Color hintTextColor = Color(0xff686868);
 
   //chip
@@ -39,4 +41,14 @@ class DarkThemeColors
 
   // progress bar indicator
   static const Color progressIndicatorColor = Color(0xFF40A76A);
+
+  // list tile
+  static const Color listTileTitleColor = Colors.white;
+  static const Color listTileSubtitleColor = Colors.white;
+  static const Color listTileBackgroundColor = Color(0xFF414141);
+  static const Color listTileIconColor = Colors.white;
+
+  //------------------- custom theme (extensions) ------------------- //
+  // header containers
+  static const Color headerContainerBackgroundColor = Color(0XFFf8a319);
 }

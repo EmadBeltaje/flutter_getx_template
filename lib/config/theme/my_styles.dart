@@ -7,6 +7,7 @@ import 'my_fonts.dart';
 import 'light_theme_colors.dart';
 
 class MyStyles {
+
   ///icons theme
   static IconThemeData getIconTheme({required bool isLightTheme}) =>
       IconThemeData(
@@ -35,60 +36,47 @@ class MyStyles {
 
   ///text theme
   static TextTheme getTextTheme({required bool isLightTheme}) => TextTheme(
-        button: MyFonts.buttonTextStyle
-            .copyWith(fontSize: MyFonts.buttonTextSize),
-        bodyText1: (MyFonts.bodyTextStyle).copyWith(
-            fontWeight: FontWeight.bold,
-            fontSize: MyFonts.body1TextSize,
+        labelLarge: MyFonts.buttonTextStyle.copyWith(
+          fontSize: MyFonts.buttonTextSize,
+        ),
+        bodyLarge: (MyFonts.bodyTextStyle).copyWith(
+          fontWeight: FontWeight.bold,
+          fontSize: MyFonts.bodyLargeSize,
+          color: isLightTheme
+              ? LightThemeColors.bodyTextColor
+              : DarkThemeColors.bodyTextColor,
+        ),
+        bodyMedium: (MyFonts.bodyTextStyle).copyWith(
+          fontSize: MyFonts.bodyMediumSize,
+          color: isLightTheme
+              ? LightThemeColors.bodyTextColor
+              : DarkThemeColors.bodyTextColor,
+        ),
+        displayLarge: (MyFonts.displayTextStyle).copyWith(
+          fontSize: MyFonts.displayLargeSize,
+          fontWeight: FontWeight.bold,
+          color: isLightTheme
+              ? LightThemeColors.displayTextColor
+              : DarkThemeColors.displayTextColor,
+        ),
+        bodySmall: TextStyle(
             color: isLightTheme
-                ? LightThemeColors.bodyTextColor
-                : DarkThemeColors.bodyTextColor),
-        bodyText2: (MyFonts.bodyTextStyle).copyWith(
-            fontSize: MyFonts.body2TextSize,
-            color: isLightTheme
-                ? LightThemeColors.bodyTextColor
-                : DarkThemeColors.bodyTextColor),
-        headline1: (MyFonts.headlineTextStyle).copyWith(
-            fontSize: MyFonts.headline1TextSize,
-            fontWeight: FontWeight.bold,
-            color: isLightTheme
-                ? LightThemeColors.headlinesTextColor
-                : DarkThemeColors.headlinesTextColor),
-        headline2: (MyFonts.headlineTextStyle).copyWith(
-            fontSize: MyFonts.headline2TextSize,
-            fontWeight: FontWeight.bold,
-            color: isLightTheme
-                ? LightThemeColors.headlinesTextColor
-                : DarkThemeColors.headlinesTextColor),
-        headline3: (MyFonts.headlineTextStyle).copyWith(
-            fontSize: MyFonts.headline3TextSize,
-            fontWeight: FontWeight.bold,
-            color: isLightTheme
-                ? LightThemeColors.headlinesTextColor
-                : DarkThemeColors.headlinesTextColor),
-        headline4: (MyFonts.headlineTextStyle).copyWith(
-            fontSize: MyFonts.headline4TextSize,
+                ? LightThemeColors.bodySmallTextColor
+                : DarkThemeColors.bodySmallTextColor,
+            fontSize: MyFonts.bodySmallTextSize),
+        displayMedium: (MyFonts.displayTextStyle).copyWith(
+            fontSize: MyFonts.displayMediumSize,
             fontWeight: FontWeight.bold,
             color: isLightTheme
-                ? LightThemeColors.headlinesTextColor
-                : DarkThemeColors.headlinesTextColor),
-        headline5: (MyFonts.headlineTextStyle).copyWith(
-            fontSize: MyFonts.headline5TextSize,
-            fontWeight: FontWeight.bold,
-            color: isLightTheme
-                ? LightThemeColors.headlinesTextColor
-                : DarkThemeColors.headlinesTextColor),
-        headline6: (MyFonts.headlineTextStyle).copyWith(
-            fontSize: MyFonts.headline6TextSize,
-            fontWeight: FontWeight.bold,
-            color: isLightTheme
-                ? LightThemeColors.headlinesTextColor
-                : DarkThemeColors.headlinesTextColor),
-        caption: TextStyle(
-            color: isLightTheme
-                ? LightThemeColors.captionTextColor
-                : DarkThemeColors.captionTextColor,
-            fontSize: MyFonts.captionTextSize),
+                ? LightThemeColors.displayTextColor
+                : DarkThemeColors.displayTextColor),
+        displaySmall: (MyFonts.displayTextStyle).copyWith(
+          fontSize: MyFonts.displaySmallSize,
+          fontWeight: FontWeight.bold,
+          color: isLightTheme
+              ? LightThemeColors.displayTextColor
+              : DarkThemeColors.displayTextColor,
+        ),
       );
 
   static ChipThemeData getChipTheme({required bool isLightTheme}) {
@@ -125,26 +113,28 @@ class MyStyles {
       (Set<MaterialState> states) {
         if (states.contains(MaterialState.pressed)) {
           return MyFonts.buttonTextStyle.copyWith(
-              fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-              fontSize: fontSize ?? MyFonts.buttonTextSize,
-              color: isLightTheme
-                  ? LightThemeColors.buttonTextColor
-                  : DarkThemeColors.buttonTextColor);
+            fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+            fontSize: fontSize ?? MyFonts.buttonTextSize,
+            color: isLightTheme
+                ? LightThemeColors.buttonTextColor
+                : DarkThemeColors.buttonTextColor,
+          );
         } else if (states.contains(MaterialState.disabled)) {
           return MyFonts.buttonTextStyle.copyWith(
-              fontSize: fontSize ?? MyFonts.buttonTextSize,
-              fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-              color: isLightTheme
-                  ? LightThemeColors.buttonDisabledTextColor
-                  : DarkThemeColors.buttonDisabledTextColor);
-        }
-        return MyFonts.buttonTextStyle.copyWith(
             fontSize: fontSize ?? MyFonts.buttonTextSize,
             fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
             color: isLightTheme
-                ? LightThemeColors.buttonTextColor
-                : DarkThemeColors
-                    .buttonTextColor); // Use the component's default.
+                ? LightThemeColors.buttonDisabledTextColor
+                : DarkThemeColors.buttonDisabledTextColor,
+          );
+        }
+        return MyFonts.buttonTextStyle.copyWith(
+          fontSize: fontSize ?? MyFonts.buttonTextSize,
+          fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+          color: isLightTheme
+              ? LightThemeColors.buttonTextColor
+              : DarkThemeColors.buttonTextColor,
+        ); // Use the component's default.
       },
     );
   }
@@ -161,8 +151,8 @@ class MyStyles {
             ),
           ),
           elevation: MaterialStateProperty.all(0),
-          padding:
-              MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(vertical: 8.h)),
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+              EdgeInsets.symmetric(vertical: 8.h)),
           textStyle: getElevatedButtonTextStyle(isLightTheme),
           backgroundColor: MaterialStateProperty.resolveWith<Color>(
             (Set<MaterialState> states) {
@@ -182,4 +172,31 @@ class MyStyles {
           ),
         ),
       );
+
+  /// list tile theme data
+  static ListTileThemeData getListTileThemeData({required bool isLightTheme}) {
+    return ListTileThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.r),
+      ),
+      iconColor: isLightTheme
+          ? LightThemeColors.listTileIconColor
+          : DarkThemeColors.listTileIconColor,
+      tileColor: isLightTheme
+          ? LightThemeColors.listTileBackgroundColor
+          : DarkThemeColors.listTileBackgroundColor,
+      titleTextStyle: TextStyle(
+        fontSize: MyFonts.listTileTitleSize,
+        color: isLightTheme
+            ? LightThemeColors.listTileTitleColor
+            : DarkThemeColors.listTileTitleColor,
+      ),
+      subtitleTextStyle: TextStyle(
+        fontSize: MyFonts.listTileSubtitleSize,
+        color: isLightTheme
+            ? LightThemeColors.listTileSubtitleColor
+            : DarkThemeColors.listTileSubtitleColor,
+      ),
+    );
+  }
 }
