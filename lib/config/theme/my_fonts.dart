@@ -46,4 +46,8 @@ class MyFonts
   // list tile fonts sizes
   static double get listTileTitleSize => 13.sp;
   static double get listTileSubtitleSize => 12.sp;
+
+  // custom themes (extensions)
+  static double get employeeListItemNameSize => 13.sp;
+  static double get employeeListItemSubtitleSize => 13.sp;
 }

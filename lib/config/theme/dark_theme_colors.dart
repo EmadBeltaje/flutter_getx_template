@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 // TODO add your dark theme colors palette
 class DarkThemeColors
@@ -51,4 +50,11 @@ class DarkThemeColors
   //------------------- custom theme (extensions) ------------------- //
   // header containers
   static const Color headerContainerBackgroundColor = Color(0XFFf8a319);
+
+  // employee list item
+  static const Color employeeListItemBackgroundColor = Color(0xFF393939);
+  static const Color employeeListItemNameColor = Colors.white;
+  static const Color employeeListItemSubtitleColor = Color(0xFFEDEDED);
+  static const Color employeeListItemIconsColor = Color(0xFFEDEDED);
+
 }

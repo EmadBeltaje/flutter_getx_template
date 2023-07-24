@@ -1,12 +1,44 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:getx_skeleton/config/theme/theme_extensions/header_container_theme_data.dart';
 
 import 'dark_theme_colors.dart';
 import 'my_fonts.dart';
 import 'light_theme_colors.dart';
+import 'theme_extensions/employee_list_item_theme_data.dart';
 
 class MyStyles {
+  /// custom employee list item theme
+  static EmployeeListItemThemeData getEmployeeListItemTheme({required bool isLightTheme}) {
+    return EmployeeListItemThemeData(
+      backgroundColor: isLightTheme ? LightThemeColors.employeeListItemBackgroundColor : DarkThemeColors.employeeListItemBackgroundColor,
+      iconTheme: IconThemeData(
+        color: isLightTheme ? LightThemeColors.employeeListItemIconsColor : DarkThemeColors.employeeListItemIconsColor,
+      ),
+      nameTextStyle: MyFonts.bodyTextStyle.copyWith(
+        fontSize: MyFonts.employeeListItemNameSize,
+        fontWeight: FontWeight.bold,
+        color: isLightTheme ? LightThemeColors.employeeListItemNameColor : DarkThemeColors.employeeListItemNameColor,
+      ),
+      subtitleTextStyle: MyFonts.bodyTextStyle.copyWith(
+        fontSize: MyFonts.employeeListItemSubtitleSize,
+        fontWeight: FontWeight.normal,
+        color: isLightTheme ? LightThemeColors.employeeListItemSubtitleColor : DarkThemeColors.employeeListItemSubtitleColor,
+      ),
+    );
+  }
+
+  /// custom header theme
+  static HeaderContainerThemeData getHeaderContainerTheme(
+          {required bool isLightTheme}) =>
+      HeaderContainerThemeData(
+          decoration: BoxDecoration(
+        color: isLightTheme
+            ? LightThemeColors.headerContainerBackgroundColor
+            : DarkThemeColors.headerContainerBackgroundColor,
+        borderRadius: BorderRadius.circular(8),
+      ));
 
   ///icons theme
   static IconThemeData getIconTheme({required bool isLightTheme}) =>
@@ -21,7 +53,7 @@ class MyStyles {
       AppBarTheme(
         elevation: 0,
         titleTextStyle:
-            getTextTheme(isLightTheme: isLightTheme).bodyText1!.copyWith(
+            getTextTheme(isLightTheme: isLightTheme).bodyMedium!.copyWith(
                   color: Colors.white,
                   fontSize: MyFonts.appBarTittleSize,
                 ),
@@ -89,7 +121,7 @@ class MyStyles {
       secondaryLabelStyle: getChipTextStyle(isLightTheme: isLightTheme),
       selectedColor: Colors.black,
       disabledColor: Colors.green,
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       secondarySelectedColor: Colors.purple,
     );
   }

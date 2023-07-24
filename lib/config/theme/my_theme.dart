@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/config/theme/my_fonts.dart';
 
 import '../../app/data/local/my_shared_pref.dart';
 import 'dark_theme_colors.dart';
 import 'light_theme_colors.dart';
 import 'my_styles.dart';
+import 'theme_extensions/employee_list_item_theme_data.dart';
 
 class MyTheme {
   static getThemeData({required bool isLight}){
     return ThemeData(
-        // main color (app bar,tabs..etc)
+      // main color (app bar,tabs..etc)
         primaryColor: isLight ? LightThemeColors.primaryColor : DarkThemeColors.primaryColor,
 
         // secondary & background color
         colorScheme: ColorScheme.fromSwatch(
-            accentColor: isLight ? LightThemeColors.accentColor : DarkThemeColors.accentColor,
-            backgroundColor: isLight ? LightThemeColors.backgroundColor : DarkThemeColors.backgroundColor,
-            brightness: isLight ? Brightness.light : Brightness.dark,
+          accentColor: isLight ? LightThemeColors.accentColor : DarkThemeColors.accentColor,
+          backgroundColor: isLight ? LightThemeColors.backgroundColor : DarkThemeColors.backgroundColor,
+          brightness: isLight ? Brightness.light : Brightness.dark,
         )
-        .copyWith(
-            secondary: isLight ? LightThemeColors.accentColor : DarkThemeColors.accentColor,
+            .copyWith(
+          secondary: isLight ? LightThemeColors.accentColor : DarkThemeColors.accentColor,
         ),
 
         // color contrast (if the theme is dark text should be white for example)
@@ -60,6 +63,11 @@ class MyTheme {
         // list tile theme
         listTileTheme: MyStyles.getListTileThemeData(isLightTheme: isLight),
 
+        // custom themes
+        extensions: [
+          MyStyles.getHeaderContainerTheme(isLightTheme: isLight),
+          MyStyles.getEmployeeListItemTheme(isLightTheme: isLight),
+        ]
     );
   }
 

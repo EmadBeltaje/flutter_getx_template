@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 // TODO add your light theme colors palette
 class LightThemeColors
@@ -51,4 +50,10 @@ class LightThemeColors
   //------------------- custom theme (extensions) ------------------- //
   // header containers
   static const Color headerContainerBackgroundColor = Color(0XFF38B6F0);
+
+  // employee list item
+  static const Color employeeListItemBackgroundColor = Colors.white;
+  static const Color employeeListItemNameColor = Color(0xFF4A4A4A);
+  static const Color employeeListItemSubtitleColor = Color(0xFFA1A4B1);
+  static const Color employeeListItemIconsColor = Color(0xFFA1A4B1);
 }

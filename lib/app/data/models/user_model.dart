@@ -26,6 +26,6 @@ class UserModel {
 
   @override
   String toString(){
-    return 'Username => ${username}\nAge => ${age}\nPhone number => ${phoneNumber}';
+    return 'Username => $username\nAge => $age\nPhone number => $phoneNumber';
   }
 }

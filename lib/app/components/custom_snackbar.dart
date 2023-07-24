@@ -22,10 +22,10 @@ class CustomSnackBar {
       title,
       message,
       duration: duration ?? const Duration(seconds: 3),
-      margin: EdgeInsets.only(top: 10,left: 10,right: 10),
+      margin: const EdgeInsets.only(top: 10,left: 10,right: 10),
       colorText: Colors.white,
       backgroundColor: color ?? Colors.redAccent,
-      icon: Icon(Icons.error, color: Colors.white,),
+      icon: const Icon(Icons.error, color: Colors.white,),
     );
   }
 
