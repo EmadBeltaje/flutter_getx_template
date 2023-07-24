@@ -699,10 +699,10 @@ packages:
     dependency: "direct main"
     description:
       name: rename_app
-      sha256: "9db1121f65843e27f4e7a2ee3bef54d8cb6bc35fca5e5bda405be2a9e41e983b"
+      sha256: "2e9439cc8a35f2927882f82cd8d67d4613f7002103f0530d4db10be0ae07cf32"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.0.0"
   shared_preferences:
     dependency: "direct main"
     description:

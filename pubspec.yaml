@@ -1,7 +1,7 @@
 name: getx_skeleton
 version: 1.0.0+1
 publish_to: none
-description: A new Flutter project.
+description: start your project in the fastest way
 environment:
   sdk: '>=3.0.6 <4.0.0'
 
@@ -27,9 +27,9 @@ dependencies:
 
   flutter_launcher_icons: # change app icon
   change_app_package_name: # change package name
-  rename_app: # rename app
+  rename_app: 1.0.0 # rename app
 
-  flutter_svg: # display svg vectors
+  flutter_svg:  # display svg vectors
 
   flutter:
     sdk: flutter
