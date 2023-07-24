@@ -110,7 +110,6 @@ This project will take care of all this repeatable things so you can start your 
 
 ## Quick Start
 - Responsive app: to make your app responsive you need to get advantage of using flutter_ScreenUtil so instead of using normal double values for height,width,radius..etc you need to use it like this
--
 ```dart
 200.w // adapted to screen width
 100.h // /Adapted to screen height
