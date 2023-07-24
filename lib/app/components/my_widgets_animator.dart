@@ -39,28 +39,18 @@ class MyWidgetsAnimator extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: animationDuration ?? const Duration(milliseconds: 300),
-      child: _getChild()(),
+      child: switch(apiCallStatus){
+        (ApiCallStatus.success) => successWidget,
+        (ApiCallStatus.error) => errorWidget,
+        (ApiCallStatus.holding) => holdingWidget ?? () { return const SizedBox();},
+        (ApiCallStatus.loading) => loadingWidget,
+        (ApiCallStatus.empty) => emptyWidget ?? (){return const SizedBox();},
+        (ApiCallStatus.refresh) => refreshWidget ?? (hideSuccessWidgetWhileRefreshing ? successWidget :  (){return const SizedBox();}),
+        (ApiCallStatus.cache) => successWidget,
+      }(),
       transitionBuilder: transitionBuilder ?? (child, animation) {
         return FadeTransition(opacity: animation,child: child,);
       },
     );
-  }
-
-  _getChild() {
-    if (apiCallStatus == ApiCallStatus.success) {
-      return successWidget;
-    } else if (apiCallStatus == ApiCallStatus.error) {
-      return errorWidget;
-    } else if (apiCallStatus == ApiCallStatus.holding) {
-      return holdingWidget ?? () { return const SizedBox();};
-    } else if (apiCallStatus == ApiCallStatus.loading) {
-      return loadingWidget;
-    }else if (apiCallStatus == ApiCallStatus.empty) {
-      return emptyWidget ?? (){return const SizedBox();};
-    }else if (apiCallStatus == ApiCallStatus.refresh) {
-      return refreshWidget ?? (hideSuccessWidgetWhileRefreshing ? successWidget :  (){return const SizedBox();});
-    } else {
-      return successWidget;
-    }
   }
 }

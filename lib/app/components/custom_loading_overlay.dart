@@ -42,7 +42,7 @@ Widget _getLoadingIndicator({String? msg}){
     child: Column(mainAxisSize: MainAxisSize.min,children: [
       Image.asset('assets/images/app_icon.png',height: 45.h,),
       SizedBox(width: 8.h,),
-      Text(msg ?? Strings.loading.tr,style: Get.theme.textTheme.bodyText1),
+      Text(msg ?? Strings.loading.tr,style: Get.theme.textTheme.bodyLarge),
     ],),
   );
 }
