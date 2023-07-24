@@ -3,7 +3,7 @@
 
 Flutter Getx template: Starting up new project with all needed configuration has never been easier.
 
-<img src="preview_images/65749.png" width="100%">
+<img src="preview_images/github.png" width="100%">
 
 ## Used By
 - [Accessline Company](https://accessline.ps/)
