@@ -3,6 +3,16 @@
 
 Flutter Getx template: Starting up new project with all needed configuration has never been easier.
 
+<img src="preview_images/65749.png" width="100%">
+
+## Used By
+- [Accessline Company](https://accessline.ps/)
+- GACA (+10k) ( [Google Play](https://play.google.com/store/apps/details?id=accessline.gaca.app) - [Apple Store](https://apps.apple.com/il/app/gasa/id6444829497) )
+- Hr App ( [Google Play](https://play.google.com/store/apps/details?id=com.talapps.hrApp) - [Apple Store]() )
+- Wafaa ( [Google Play](https://play.google.com/store/apps/details?id=loai.wafaa))
+- Hr App ( [Google Play](https://play.google.com/store/apps/details?id=com.jumpers.ksa) - [Apple Store](https://apps.apple.com/us/app/jumpers-app/id1662183546) )
+- Open Source : [Ecommerce Ui Kit](https://github.com/AbdQader/flutter_ecommerce_app)
+
 ## Introduction
 
 We all face the same problem when we want to start a new project we have to take care of some repeatable things such as
@@ -11,17 +21,20 @@ We all face the same problem when we want to start a new project we have to take
 - Firebase Messaging 📨
 - Notifications setup 🔔
 - Safe api requests & error handling 🔏
-- Changing between widgets during api call (loading,success,failed..etc) 😴
+- Changing between widgets during api call (loading,success,failed..etc) 🔥
 - Snackbar,Toasts & in app notifications 🪖
-- Making app more responsive and stop font scaling ⚖️
-  This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
+- Making app more responsive and stop font scaling 🚀
+- Change app Icon, Name and packageid 🖋️
 
-## Upcoming Updates 🚀
-- [ ] Update to latest flutter version 
-- [ ] Update Theme classes
-- [ ] Update safe api call class
-- [ ] Refactor Code
-- [ ] Update Example 
+This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
+
+
+## Latest Updates 🚀
+- [x] Update to latest flutter version
+- [x] Update Theme classes
+- [x] Update safe api call class
+- [x] Refactor Code
+- [x] Update Example
 
 
 ## What is new 🌟
@@ -38,49 +51,51 @@ We all face the same problem when we want to start a new project we have to take
 - [x] Refactor Code 🛠️
 - [ ] Support Web (in progress) 💡
 
-## Acknowledgment
-Project was created using [get_cli](https://pub.dev/packages/get_cli) which is a great tool helping you to (start project,create screens/controllers, handling DI)..etc and we will list other packages that helped to create this skeleton
-- [GetX](https://pub.dev/packages/get) for state management,navigation,managing dependencies..etc
-- [flutter_screenutil](https://pub.dev/packages/flutter_screenutil) to make app more responsive
-- [hive](https://pub.dev/packages/hive) as local database
-- [shared_preferences](https://pub.dev/packages/shared_preferences) store data persistently as key/value
-- [awesome_notifications](https://pub.dev/packages/awesome_notifications) for local notification
+[//]: # (## Acknowledgment)
+
+[//]: # (Project was created using [get_cli]&#40;https://pub.dev/packages/get_cli&#41; which is a great tool helping you to &#40;start project,create screens/controllers, handling DI&#41;..etc and we will list other packages that helped to create this skeleton)
+
+[//]: # (- [GetX]&#40;https://pub.dev/packages/get&#41; for state management,navigation,managing dependencies..etc)
+
+[//]: # (- [flutter_screenutil]&#40;https://pub.dev/packages/flutter_screenutil&#41; to make app more responsive)
+
+[//]: # (- [hive]&#40;https://pub.dev/packages/hive&#41; as local database)
+
+[//]: # (- [shared_preferences]&#40;https://pub.dev/packages/shared_preferences&#41; store data persistently as key/value)
+
+[//]: # (- [awesome_notifications]&#40;https://pub.dev/packages/awesome_notifications&#41; for local notification)
+
 ## Clone and start project
-Before discovering folders lets first perform some actions to make the project ready to launch
-- first run this command it will generate hive type adapters (for our custom classes that we want to store locally)
-
-    ```
-    flutter packages pub run build_runner build --delete-conflicting-outputs
-    ```
-  if you don't want to use hive comment this line in main.dart
-
-    ```dart
-    await MyHive.init(adapters: [UserModelAdapter()]);
-    ```
 - To make your app responsive and look exactly as your (xd,figma..etc) design you need to set artbord size for flutter_ScreenUtil in main.dart
     ```dart
     ScreenUtilInit(
       designSize: const Size(375, 812), // change this to your xd artboard size
     ```
-- FCM & Awesome Notifications are combined at the same class so when ever you connect your app to firebase your app will be ready to receive notifications you don't need to do anything except sending fcm notification to your api via implementing the method (sendFcmTokenToServer) which is inside FcmHelper class 😎
+
+
+- FCM & Awesome Notifications are initialized in main.dart so when ever you connect your app to firebase your app will be ready to receive notifications you don't need to do anything, if you want to send token to api you can find this function in FcmHelper class 😎
     ```dart
     static _sendFcmTokenToServer(){
         var token = MySharedPref.getFcmToken();
         // TODO SEND FCM TOKEN TO SERVER
     }
     ```
+
 - Change app package name
     ```
     flutter pub run change_app_package_name:main com.new.package.name
     ```
+
 - Change app name
     ```
     flutter pub run rename_app:main all="My App Name"
     ```
+
 - Change app launch icon (replace assets/images/app_icon.png with your app icon) then run this command
     ```
     flutter pub run flutter_launcher_icons:main
     ```
+
 - FCM: firebase has recently added (add flutter app) to your firebase which will make adding our flutter(android/ios) app to firebase take only 2 steps 🔥 but first you need to download [Firebase CLI](https://firebase.google.com/docs/cli?authuser=0&hl=en#install_the_firebase_cli) and in the terminal execute:
     ```
     dart pub global activate flutterfire_cli
@@ -92,21 +107,22 @@ Before discovering folders lets first perform some actions to make the project r
   and that's it! your project is now connected to firebase and fcm is up and ready to get notifications
   ##### Important Note
   IOS require few more steps from your side to recive fcm notifications follow the [Dcos](https://firebase.flutter.dev/docs/messaging/apple-integration/) steps and after that everything should be working fine from flutter side
+
 ## Quick Start
 - Responsive app: to make your app responsive you need to get advantage of using flutter_ScreenUtil so instead of using normal double values for height,width,radius..etc you need to use it like this
 -
-  ```dart
-  200.w // adapted to screen width
-  100.h // /Adapted to screen height
-  25.sp // adapter font size
-  10.r // adapter radius
-  // Example
-  Container(
-      height: 100.h,
-      width: 200.w,
-      child: Text("Hello",style: TextStyle(fontSize: 20.sp,))
-  )
-  ```
+```dart
+200.w // adapted to screen width
+100.h // /Adapted to screen height
+25.sp // adapted font size
+10.r // adapted radius
+// Example
+Container(
+    height: 100.h,
+    width: 200.w,
+    child: Text("Hello",style: TextStyle(fontSize: 20.sp,))
+)
+```
 
 - Theme
   - Change theme
@@ -386,26 +402,32 @@ base client will catch all the possible errors and if you didn't pass onError fu
 
 ```dart
 GetBuilder<HomeController>(
-        builder: (_){
-          return MyWidgetsAnimator(
-              apiCallStatus: controller.apiCallStatus,
-              loadingWidget: () => const Center(child: CircularProgressIndicator(),),
-              errorWidget: ()=> const Center(child: Text('Something went wrong!'),),
-              successWidget: () =>
-                 ListView.separated(
-                  itemCount: controller.data!.length,
-                  separatorBuilder: (_,__) => SizedBox(height: 10.h,),
-                  itemBuilder: (ctx,index) => ListTile(
-                      title: Text(controller.data![index]['userId'].toString()),
-                      subtitle: Text(controller.data![index]['title']),
-                    ),
-                ),
+builder: (_){
+return MyWidgetsAnimator(
+apiCallStatus: controller.apiCallStatus,
+loadingWidget: () => const Center(child: CircularProgressIndicator(),),
+errorWidget: ()=> const Center(child: Text('Something went wrong!'),),
+successWidget: () =>
+ListView.separated(
+itemCount: controller.data!.length,
+separatorBuilder: (_,__) => SizedBox(height: 10.h,),
+itemBuilder: (ctx,index) => ListTile(
+title: Text(controller.data![index]['userId'].toString()),
+subtitle: Text(controller.data![index]['title']),
+),
+),
 
-          );
-        },
-      )
+);
+},
+)
 ```
 **NOTE:** MyWidgetsAnimator will take care of ui changing with animation you will pass the ApiCallStatus and success,failed,loading..etc widgets and it will take care of transition
+
+## Thanks To Contributors 🧡
+
+[![Contributors](https://contrib.rocks/image?repo=EmadBeltaje/flutter_getx_template)](https://github.com/EmadBeltaje/flutter_getx_template/graphs/contributors)
+
+Thanks to all the amazing contributors who have helped improve this project! 😇
 
 ## Support
 
