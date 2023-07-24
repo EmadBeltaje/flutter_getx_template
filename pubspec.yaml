@@ -2,34 +2,36 @@ name: getx_skeleton
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=2.16.0 <3.0.0'
+environment:
+  sdk: '>=3.0.6 <4.0.0'
 
-dependencies: 
-  cupertino_icons:
-  get: # for state management and context less stuff
+dependencies:
+  cupertino_icons: ^1.0.5
+  get: ^4.6.5 # for state management and context less stuff
 
-  logger: # log events in clear way insted of (print)
+  logger: ^1.4.0 # log events in clear way insted of (print)
 
-  flutter_screenutil: # make app responsive
+  flutter_screenutil: ^5.8.4 # make app responsive
 
-  dio: # for api requests
-  http_mock_adapter: # mocking dio for testing
-  pretty_dio_logger: # for dio api logging and debugging
+  dio: ^5.2.1+1 # for api requests
+  http_mock_adapter: ^0.4.4 # mocking dio for testing
+  pretty_dio_logger: ^1.3.1 # for dio api logging and debugging
 
-  hive:  # local database (SQFlite replacement)
-  hive_flutter: # make it easy to use hive (no need for path provider)
-  shared_preferences: # shared preferences persistence key value store
+  hive: ^2.2.3  # local database (SQFlite replacement)
+  hive_flutter: ^1.1.0 # make it easy to use hive (no need for path provider)
+  shared_preferences: ^2.2.0 # shared preferences persistence key value store
 
-  firebase_core:  # to initialize firebase services
-  firebase_messaging:  # fcm services
+  firebase_core: ^2.14.0 # to initialize firebase services
+  firebase_messaging: ^14.6.4 # fcm services
   awesome_notifications: ^0.7.4+1 # notifications services (will be used for fcm)
 
   flutter_launcher_icons: # change app icon
   change_app_package_name: # change package name
   rename_app: # rename app
 
-  flutter: 
+  flutter_svg: # display svg vectors
+
+  flutter:
     sdk: flutter
 
 dev_dependencies:
@@ -37,11 +39,12 @@ dev_dependencies:
   flutter_lints:
   build_runner:  # generate dart files
   hive_generator: # generate hive files
+  pub_semver: ^2.1.4 # helper to generate hive models
 
   integration_test:
     sdk: flutter
 
-  flutter_test: 
+  flutter_test:
     sdk: flutter
 
 flutter_icons:
@@ -49,7 +52,7 @@ flutter_icons:
   ios: true
   image_path: "assets/images/app_icon.png"
 
-flutter: 
+flutter:
   uses-material-design: true
 
   assets:
