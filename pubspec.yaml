@@ -3,7 +3,7 @@ version: 1.0.0+1
 publish_to: none
 description: start your project in the fastest way
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: '>=3.0.1 <4.0.0'
 
 dependencies:
   cupertino_icons: ^1.0.5
