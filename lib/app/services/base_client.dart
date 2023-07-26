@@ -19,7 +19,14 @@ enum RequestType {
 }
 
 class BaseClient {
-  static final Dio _dio = Dio()
+  static final Dio _dio = Dio(
+      BaseOptions(
+          headers: {
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json'
+          }
+      )
+  )
     ..interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
@@ -40,12 +47,11 @@ class BaseClient {
   static safeApiCall(
       String url,
       RequestType requestType, {
-        Map<String, dynamic> headers = const {},
+        Map<String, dynamic>? headers,
         Map<String, dynamic>? queryParameters,
         required Function(Response response) onSuccess,
         Function(ApiException)? onError,
         Function(int value, int progress)? onReceiveProgress,
-        bool useAuthorizationHeader = true,
         Function(int total, int progress)?
         onSendProgress, // while sending (uploading) progress
         Function? onLoading,
@@ -53,15 +59,6 @@ class BaseClient {
       }) async {
     try {
 
-      // Add Content-Type Headers if not exist
-      if(!headers.containsKey("Content-Type")){
-        headers['Content-Type'] = 'application/json';
-      }
-
-      // Add Accept Headers if not exist
-      if(!headers.containsKey("Accept")){
-        headers['Accept'] = 'application/json';
-      }
 
       // 1) indicate loading state
       await onLoading?.call();
