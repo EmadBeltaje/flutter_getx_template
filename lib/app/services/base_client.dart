@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../config/translations/strings_enum.dart';
@@ -31,6 +32,12 @@ class BaseClient {
   // request timeout (default 10 seconds)
   static const int _timeoutInSeconds = 10;
 
+  static final Map<String, dynamic> _defaultHeaders = {
+    "Accept": "application/json",
+    //"Content-Type": "multipart/form-data",
+    "Content-Type": "application/json",
+  };
+
   /// dio getter (used for testing)
   static get dio => _dio;
 
@@ -38,7 +45,7 @@ class BaseClient {
   static safeApiCall(
       String url,
       RequestType requestType, {
-        Map<String, dynamic>? headers,
+        Map<String, dynamic> headers = const {},
         Map<String, dynamic>? queryParameters,
         required Function(Response response) onSuccess,
         Function(ApiException)? onError,
@@ -49,6 +56,10 @@ class BaseClient {
         dynamic data,
       }) async {
     try {
+
+      // Add default json Headers
+      headers.addEntries(_defaultHeaders.entries);
+
       // 1) indicate loading state
       await onLoading?.call();
       // 2) try to perform http request
@@ -99,7 +110,9 @@ class BaseClient {
     } on TimeoutException {
       // Api call went out of time
       _handleTimeoutException(url: url, onError: onError);
-    } catch (error) {
+    } catch (error, stackTrace) {
+      // print the line of code that throw unexpected exception
+      Logger().e(stackTrace);
       // unexpected error for example (parsing json error)
       _handleUnexpectedException(url: url, onError: onError, error: error);
     }
