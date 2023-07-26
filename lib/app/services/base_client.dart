@@ -63,15 +63,6 @@ class BaseClient {
         headers['Accept'] = 'application/json';
       }
 
-      // Add Authorization
-      if(useAuthorizationHeader){
-        final _token = MySharedPref.getAuthToken();
-        if(_token != null){
-          headers['Authorization'] = 'Bearer $_token';
-        }
-      }
-
-
       // 1) indicate loading state
       await onLoading?.call();
       // 2) try to perform http request
