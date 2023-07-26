@@ -48,9 +48,7 @@ class MyWidgetsAnimator extends StatelessWidget {
         (ApiCallStatus.refresh) => refreshWidget ?? (hideSuccessWidgetWhileRefreshing ? successWidget :  (){return const SizedBox();}),
         (ApiCallStatus.cache) => successWidget,
       }(),
-      transitionBuilder: transitionBuilder ?? (child, animation) {
-        return FadeTransition(opacity: animation,child: child,);
-      },
+      transitionBuilder: transitionBuilder ?? AnimatedSwitcher.defaultTransitionBuilder
     );
   }
 }
