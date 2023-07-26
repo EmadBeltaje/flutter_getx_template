@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:getx_skeleton/app/data/local/my_shared_pref.dart';
 import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -32,12 +33,6 @@ class BaseClient {
   // request timeout (default 10 seconds)
   static const int _timeoutInSeconds = 10;
 
-  static final Map<String, dynamic> _defaultHeaders = {
-    "Accept": "application/json",
-    //"Content-Type": "multipart/form-data",
-    "Content-Type": "application/json",
-  };
-
   /// dio getter (used for testing)
   static get dio => _dio;
 
@@ -50,6 +45,7 @@ class BaseClient {
         required Function(Response response) onSuccess,
         Function(ApiException)? onError,
         Function(int value, int progress)? onReceiveProgress,
+        bool useAuthorizationHeader = true,
         Function(int total, int progress)?
         onSendProgress, // while sending (uploading) progress
         Function? onLoading,
@@ -57,8 +53,24 @@ class BaseClient {
       }) async {
     try {
 
-      // Add default json Headers
-      headers.addEntries(_defaultHeaders.entries);
+      // Add Content-Type Headers if not exist
+      if(!headers.containsKey("Content-Type")){
+        headers['Content-Type'] = 'application/json';
+      }
+
+      // Add Accept Headers if not exist
+      if(!headers.containsKey("Accept")){
+        headers['Accept'] = 'application/json';
+      }
+
+      // Add Authorization
+      if(useAuthorizationHeader){
+        final _token = MySharedPref.getAuthToken();
+        if(_token != null){
+          headers['Authorization'] = 'Bearer $_token';
+        }
+      }
+
 
       // 1) indicate loading state
       await onLoading?.call();
