@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:getx_skeleton/app/data/local/my_shared_pref.dart';
+import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../config/translations/strings_enum.dart';
@@ -17,7 +19,14 @@ enum RequestType {
 }
 
 class BaseClient {
-  static final Dio _dio = Dio()
+  static final Dio _dio = Dio(
+      BaseOptions(
+          headers: {
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json'
+          }
+      )
+  )
     ..interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
@@ -49,6 +58,8 @@ class BaseClient {
         dynamic data,
       }) async {
     try {
+
+
       // 1) indicate loading state
       await onLoading?.call();
       // 2) try to perform http request
@@ -99,7 +110,9 @@ class BaseClient {
     } on TimeoutException {
       // Api call went out of time
       _handleTimeoutException(url: url, onError: onError);
-    } catch (error) {
+    } catch (error, stackTrace) {
+      // print the line of code that throw unexpected exception
+      Logger().e(stackTrace);
       // unexpected error for example (parsing json error)
       _handleUnexpectedException(url: url, onError: onError, error: error);
     }
