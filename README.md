@@ -7,10 +7,11 @@ Flutter Getx template: Starting up new project with all needed configuration has
 
 ## Used By
 - [Accessline Company](https://accessline.ps/)
-- GACA (+10k) ( [Google Play](https://play.google.com/store/apps/details?id=accessline.gaca.app) - [Apple Store](https://apps.apple.com/il/app/gasa/id6444829497) )
+- [Smart Angle Group](https://www.smartanglegroup.com)
+- GACA (+10k) ( [Google Play](https://play.google.com/store/apps/details?id=accessline.gaca.app) - [Apple Store](https://apps.apple.com/il/app/%D8%A8%D9%88%D8%A7%D8%A8%D8%A9-%D8%A7%D9%84%D9%85%D9%88%D8%B8%D9%81/id1616229306) )
 - Hr App ( [Google Play](https://play.google.com/store/apps/details?id=com.talapps.hrApp) - [Apple Store]() )
 - Wafaa ( [Google Play](https://play.google.com/store/apps/details?id=loai.wafaa))
-- Hr App ( [Google Play](https://play.google.com/store/apps/details?id=com.jumpers.ksa) - [Apple Store](https://apps.apple.com/us/app/jumpers-app/id1662183546) )
+- Jumpers ( [Google Play](https://play.google.com/store/apps/details?id=com.jumpers.ksa) - [Apple Store](https://apps.apple.com/us/app/jumpers-app/id1662183546) )
 - Open Source : [Ecommerce Ui Kit](https://github.com/AbdQader/flutter_ecommerce_app)
 
 ## Introduction
