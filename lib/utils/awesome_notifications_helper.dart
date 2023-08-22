@@ -18,7 +18,7 @@ class AwesomeNotificationsHelper {
     await _initNotification();
 
     // request permission to show notifications
-    await awesomeNotifications.requestPermissionToSendNotifications();
+    awesomeNotifications.requestPermissionToSendNotifications();
 
     // list when user click on notifications
     listenToActionButtons();
