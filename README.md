@@ -30,9 +30,14 @@ We all face the same problem when we want to start a new project we have to take
 
 This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
 
+## Upcoming Updates
+- [ ] Update to latest Flutter Version 🔥
+- [ ] Update to GetX 5 🚀
+- [ ] Add overlay loading functionality 🎨
+
 
 ## Latest Updates 🚀
-- [x] Update to latest flutter version
+- [x] Update to latest flutter version (3.10.6)
 - [x] Update Theme classes
 - [x] Update safe api call class
 - [x] Refactor Code
@@ -40,7 +45,6 @@ This project will take care of all this repeatable things so you can start your 
 
 
 ## What is new 🌟
-
 - [x] Separate Local Notification helper from fcm helper 🛠️
 - [x] Integration Test for BaseClient 🧪
 - [x] Integration Test for Awesome Notifications Helper 🧪
@@ -51,7 +55,6 @@ This project will take care of all this repeatable things so you can start your 
 - [x] Unit Test for Localization Service 🧪
 - [x] Replace get_storage with SharedPref (unsolved testing problems with get_storage) 📦️
 - [x] Refactor Code 🛠️
-- [ ] Support Web (in progress) 💡
 
 [//]: # (## Acknowledgment)
 
@@ -403,23 +406,23 @@ base client will catch all the possible errors and if you didn't pass onError fu
 
 ```dart
 GetBuilder<HomeController>(
-builder: (_){
-return MyWidgetsAnimator(
-apiCallStatus: controller.apiCallStatus,
-loadingWidget: () => const Center(child: CircularProgressIndicator(),),
-errorWidget: ()=> const Center(child: Text('Something went wrong!'),),
-successWidget: () =>
-ListView.separated(
-itemCount: controller.data!.length,
-separatorBuilder: (_,__) => SizedBox(height: 10.h,),
-itemBuilder: (ctx,index) => ListTile(
-title: Text(controller.data![index]['userId'].toString()),
-subtitle: Text(controller.data![index]['title']),
-),
-),
-
-);
-},
+    builder: (_){
+        return MyWidgetsAnimator(
+            apiCallStatus: controller.apiCallStatus,
+            loadingWidget: () => const Center(child: CircularProgressIndicator(),),
+            errorWidget: ()=> const Center(child: Text('Something went wrong!'),),
+            successWidget: () =>
+            ListView.separated(
+            itemCount: controller.data!.length,
+            separatorBuilder: (_,__) => SizedBox(height: 10.h,),
+            itemBuilder: (ctx,index) => ListTile(
+            title: Text(controller.data![index]['userId'].toString()),
+            subtitle: Text(controller.data![index]['title']),
+            ),
+        ),
+        
+        );
+    },
 )
 ```
 **NOTE:** MyWidgetsAnimator will take care of ui changing with animation you will pass the ApiCallStatus and success,failed,loading..etc widgets and it will take care of transition
