@@ -13,6 +13,7 @@ Flutter Getx template: Starting up new project with all needed configuration has
 - Wafaa ( [Google Play](https://play.google.com/store/apps/details?id=loai.wafaa))
 - Jumpers ( [Google Play](https://play.google.com/store/apps/details?id=com.jumpers.ksa) - [Apple Store](https://apps.apple.com/us/app/jumpers-app/id1662183546) )
 - Open Source : [Ecommerce Ui Kit](https://github.com/AbdQader/flutter_ecommerce_app)
+- Open Source : [Weather App](https://github.com/AbdQader/flutter_weather_app)
 - thunder_cli : [package](https://pub.dev/packages/thunder_cli)
 
 ## Introduction
