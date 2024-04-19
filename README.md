@@ -6,7 +6,7 @@ get create page:dashboard
 ```
 
 > -2 create the sub screens with thier controllers manually (i prefer to put them on the views folder of the main screen)
-<img src="preview_images/file_struc.png" width="190px">
+<img src="preview_images/file_struc.png" width="250px">
 
 > -3 now to initialize the controllers you can add them to start with the main screen binding (that is one of many ways)
 ```dart
