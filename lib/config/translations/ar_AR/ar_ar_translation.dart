@@ -32,4 +32,10 @@ final Map<String, String> arAR =
   Strings.loai : 'لؤي عرفات',
   Strings.retry : 'اعادة المحاولة',
   Strings.internetError : 'خطأ في الاتصال بالانترنت ⚠️',
+  Strings.bottomNavigationExample : 'مثال التنقل',
+  Strings.clickHere : 'اضغط هنا!',
+  Strings.dashboard: 'اللوحة الرئيسية',
+  Strings.downloads: 'التحميلات',
+  Strings.favourite: 'المفضلة',
+  Strings.settings: 'الإعدادات',
 };

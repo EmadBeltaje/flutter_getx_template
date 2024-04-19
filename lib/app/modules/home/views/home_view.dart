@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:getx_skeleton/app/routes/app_pages.dart';
 
 import '../../../../config/translations/strings_enum.dart';
 import '../../../components/api_error_widget.dart';
@@ -43,8 +44,9 @@ class HomeView extends GetView<HomeController> {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.w),
                           child: ListTile(
-                            title: Text(Strings.attendanceRegistration.tr),
-                            subtitle: Text(Strings.time.tr),
+                            onTap: () => Get.toNamed(Routes.DASHBOARD),
+                            title: Text(Strings.bottomNavigationExample.tr),
+                            subtitle: Text(Strings.clickHere.tr),
                             trailing: const Icon(Icons.arrow_forward),
                             leading: Container(
                               height: 47.h,
@@ -53,13 +55,7 @@ class HomeView extends GetView<HomeController> {
                                 color: Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: SvgPicture.asset(
-                                'assets/vectors/profile.svg',
-                                fit: BoxFit.none,
-                                color: Colors.white,
-                                height: 19.h,
-                                width: 19.h,
-                              ),
+                              child: Icon(Icons.dashboard,size: 19.sp,color: Colors.white,),
                             ),
                           ),
                         ),

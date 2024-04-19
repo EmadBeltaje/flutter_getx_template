@@ -1,29 +1,13 @@
-# Navigation Bar Example [(Material 3)](https://youtu.be/DVGYddFaLv0) 🚀
+import 'package:flutter/material.dart';
 
-> -1 create the main screen (that will contain the navigation bar) lets call it (Dashboard) in our case
-```sh
-get create page:dashboard
-```
+import 'package:get/get.dart';
 
-> -2 create the sub screens with thier controllers manually (i prefer to put them on the views folder of the main screen)
-<img src="preview_images/file_struc.png" width="190px">
+import '../../../../config/translations/strings_enum.dart';
+import '../controllers/dashboard_controller.dart';
+import 'downloads/downloads_view.dart';
+import 'favourite/favourite_view.dart';
+import 'settings/settings_view.dart';
 
-> -3 now to initialize the controllers you can add them to start with the main screen binding (that is one of many ways)
-```dart
-class DashboardBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.put<DashboardController>(DashboardController());
-    // initialize sub screens controllers
-    Get.put<FavouriteController>(FavouriteController());
-    Get.put<DownloadsController>(DownloadsController());
-    Get.put<SettingsController>(SettingsController());
-  }
-}
-```
-
-> 4- add indexed stack and bottom navigation to the main screen (dashboard)
-```dart
 class DashboardView extends GetView<DashboardController> {
   const DashboardView({Key? key}) : super(key: key);
   @override
@@ -67,19 +51,3 @@ class DashboardView extends GetView<DashboardController> {
     );
   }
 }
-```
-
-> 5- Add this code to the main screen controller (dashboard controller)
-```dart
-class DashboardController extends GetxController {
-  int selectedIndex = 0;
-
-  onDestinationSelected(int selectedIndex){
-    this.selectedIndex = selectedIndex;
-    update();
-  }
-}
-```
-
-# Final Result ⭐️
-<img src="preview_images/bottom_nav.png">

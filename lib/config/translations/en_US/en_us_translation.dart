@@ -31,4 +31,10 @@ const Map<String, String> enUs = {
   Strings.loai : 'Loai Arafat',
   Strings.retry : 'Retry',
   Strings.internetError : 'Error Occurred Check Your Internet Connection! ⚠️',
+  Strings.bottomNavigationExample: 'Bottom navigation example',
+  Strings.clickHere: 'Click Here!',
+  Strings.dashboard: 'Dashboard',
+  Strings.downloads: 'Downloads',
+  Strings.favourite: 'Favourite',
+  Strings.settings: 'Settings',
 };

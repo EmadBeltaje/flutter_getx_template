@@ -31,4 +31,10 @@ class Strings {
   static const String loai = 'Loai';
   static const String retry = 'retry';
   static const String internetError = 'internet error';
+  static const String bottomNavigationExample = 'bottom navigation example';
+  static const String clickHere = 'click here';
+  static const String dashboard = 'dashboard';
+  static const String downloads = 'downloads';
+  static const String favourite = 'favourite';
+  static const String settings = 'settings';
 }
