@@ -186,6 +186,11 @@ class BaseClient {
         Function(ApiException)? onError,
         required String url}) {
 
+    // no internet connection
+    if(error.type == DioExceptionType.connectionError){
+      return _handleSocketException(url: url,onError: onError);
+    }
+
     // 404 error
     if (error.response?.statusCode == 404) {
       if (onError != null) {
