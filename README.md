@@ -1,4 +1,5 @@
 
+
 # Flutter GetX Template
 
 Flutter Getx template: Starting up new project with all needed configuration has never been easier.
@@ -8,6 +9,7 @@ Flutter Getx template: Starting up new project with all needed configuration has
 ## Used By
 - [Accessline Company](https://accessline.ps/)
 - [Smart Angle Group](https://www.smartanglegroup.com)
+- [Squarement](https://www.squarement.sa/)
 - GACA (+10k) ( [Google Play](https://play.google.com/store/apps/details?id=accessline.gaca.app) - [Apple Store](https://apps.apple.com/il/app/%D8%A8%D9%88%D8%A7%D8%A8%D8%A9-%D8%A7%D9%84%D9%85%D9%88%D8%B8%D9%81/id1616229306) )
 - Hr App ( [Google Play](https://play.google.com/store/apps/details?id=com.talapps.hrApp) - [Apple Store]() )
 - Wafaa ( [Google Play](https://play.google.com/store/apps/details?id=loai.wafaa))
@@ -27,7 +29,7 @@ We all face the same problem when we want to start a new project we have to take
 - Changing between widgets during api call (loading,success,failed..etc) 🔥
 - Snackbar,Toasts & in app notifications 🪖
 - Making app more responsive and stop font scaling 🚀
-- Change app Icon, Name and packageid 🖋️
+- Change app Icon, Name and package id 🖋️
 
 This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
 
@@ -35,6 +37,9 @@ This project will take care of all this repeatable things so you can start your 
 - [ ] Update to latest Flutter Version 🔥
 - [ ] Update to GetX 5 🚀
 - [ ] Add overlay loading functionality 🎨
+- [ ] Update to the latest flutter version 🚀
+- [ ] Upgrade android target to 35 to support latest android versions 🚀
+- [ ] Upgrade gradle version to the latest 🚀
 
 
 ## Latest Updates 🚀
