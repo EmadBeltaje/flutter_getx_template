@@ -13,7 +13,7 @@ import 'widgets/employees_list.dart';
 import 'widgets/header.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {

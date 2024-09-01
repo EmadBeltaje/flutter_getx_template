@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../config/translations/strings_enum.dart';
@@ -111,7 +111,9 @@ class BaseClient {
       _handleTimeoutException(url: url, onError: onError);
     } catch (error, stackTrace) {
       // print the line of code that throw unexpected exception
-      Logger().e(stackTrace);
+      if(kDebugMode) {
+        print(stackTrace);
+      }
       // unexpected error for example (parsing json error)
       _handleUnexpectedException(url: url, onError: onError, error: error);
     }
