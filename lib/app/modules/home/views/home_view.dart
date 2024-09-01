@@ -24,63 +24,66 @@ class HomeView extends GetView<HomeController> {
           const Header(),
 
           // ----------------------- Content ----------------------- //
-          GetBuilder<HomeController>(
-            builder: (_) {
-              return Expanded(
-                child: MyWidgetsAnimator(
-                  apiCallStatus: controller.apiCallStatus,
-                  loadingWidget: () => const Center(child: CupertinoActivityIndicator(),),
-                  errorWidget: () => ApiErrorWidget(
-                      message: Strings.internetError.tr,
-                      retryAction: () => controller.getData(),
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  ),
-                  successWidget: () => SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        20.verticalSpace,
-                        // ----------------------- Attendance List Tile ----------------------- //
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
-                          child: ListTile(
-                            title: Text(Strings.attendanceRegistration.tr),
-                            subtitle: Text(Strings.time.tr),
-                            trailing: const Icon(Icons.arrow_forward),
-                            leading: Container(
-                              height: 47.h,
-                              width: 47.h,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColor,
-                                borderRadius: BorderRadius.circular(8),
+          GetBuilder<HomeController>(builder: (_) {
+            return Expanded(
+              child: MyWidgetsAnimator(
+                apiCallStatus: controller.apiCallStatus,
+                loadingWidget: () => const Center(
+                  child: CupertinoActivityIndicator(),
+                ),
+                errorWidget: () => ApiErrorWidget(
+                  message: Strings.internetError.tr,
+                  retryAction: () => controller.getData(),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                ),
+                successWidget: () => SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      20.verticalSpace,
+                      // ----------------------- Attendance List Tile ----------------------- //
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: ListTile(
+                          title: Text(Strings.attendanceRegistration.tr),
+                          subtitle: Text(Strings.time.tr),
+                          trailing: const Icon(Icons.arrow_forward),
+                          leading: Container(
+                            height: 47.h,
+                            width: 47.h,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/vectors/profile.svg',
+                              fit: BoxFit.none,
+                              colorFilter: const ColorFilter.mode(
+                                Colors.white,
+                                BlendMode.srcIn,
                               ),
-                              child: SvgPicture.asset(
-                                'assets/vectors/profile.svg',
-                                fit: BoxFit.none,
-                                color: Colors.white,
-                                height: 19.h,
-                                width: 19.h,
-                              ),
+                              height: 19.h,
+                              width: 19.h,
                             ),
                           ),
                         ),
-                        20.verticalSpace,
+                      ),
+                      20.verticalSpace,
 
-                        // ----------------------- Employee details cards ----------------------- //
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
-                          child: DataGrid(),
-                        ),
-                        20.verticalSpace,
+                      // ----------------------- Employee details cards ----------------------- //
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: DataGrid(),
+                      ),
+                      20.verticalSpace,
 
-                        // ----------------------- Employees List ----------------------- //
-                        EmployeesList(),
-                      ],
-                    ),
+                      // ----------------------- Employees List ----------------------- //
+                      const EmployeesList(),
+                    ],
                   ),
                 ),
-              );
-            }
-          ),
+              ),
+            );
+          }),
         ],
       ),
     );

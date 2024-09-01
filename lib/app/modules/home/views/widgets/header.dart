@@ -103,7 +103,10 @@ class Header extends StatelessWidget {
                       child: SvgPicture.asset(
                         Get.isDarkMode ? 'assets/vectors/moon.svg' : 'assets/vectors/sun.svg',
                         fit: BoxFit.none,
-                        color: Colors.white,
+                        colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn
+                        ),
                         height: 10,
                         width: 10,
                       ),
@@ -126,7 +129,10 @@ class Header extends StatelessWidget {
                       child: SvgPicture.asset(
                         'assets/vectors/language.svg',
                         fit: BoxFit.none,
-                        color: Colors.white,
+                        colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn
+                        ),
                         height: 10,
                         width: 10,
                       ),

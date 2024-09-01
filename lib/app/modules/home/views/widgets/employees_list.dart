@@ -13,7 +13,8 @@ class EmployeeMockModel {
   final Color backgroundColor;
   final String imagePath;
 
-  EmployeeMockModel(this.name, this.date, this.location,this.backgroundColor,this.imagePath);
+  EmployeeMockModel(this.name, this.date, this.location, this.backgroundColor,
+      this.imagePath);
 }
 
 class EmployeesList extends StatefulWidget {
@@ -25,27 +26,12 @@ class EmployeesList extends StatefulWidget {
 
 class _EmployeesListState extends State<EmployeesList> {
   List<EmployeeMockModel> employees = [
-    EmployeeMockModel(
-        Strings.name.tr,
-        '4 july 2023',
-        Strings.gaza.tr,
-        const Color(0xFFFFE2C2),
-        'assets/images/person1.png'
-    ),
-    EmployeeMockModel(
-      Strings.abdQader.tr,
-      '16 july 2023',
-      Strings.gaza.tr,
-      const Color(0xFFD9839F),
-      'assets/images/person2.png'
-    ),
-    EmployeeMockModel(
-      Strings.loai.tr,
-      '13 mar 2023',
-      Strings.gaza.tr,
-      const Color(0xFFFFE2C2),
-      'assets/images/person1.png'
-    ),
+    EmployeeMockModel(Strings.name.tr, '4 july 2023', Strings.gaza.tr,
+        const Color(0xFFFFE2C2), 'assets/images/person1.png'),
+    EmployeeMockModel(Strings.abdQader.tr, '16 july 2023', Strings.gaza.tr,
+        const Color(0xFFD9839F), 'assets/images/person2.png'),
+    EmployeeMockModel(Strings.loai.tr, '13 mar 2023', Strings.gaza.tr,
+        const Color(0xFFFFE2C2), 'assets/images/person1.png'),
   ];
 
   @override
@@ -82,19 +68,20 @@ class _EmployeesListState extends State<EmployeesList> {
             itemBuilder: (ctx, index) {
               return Container(
                 margin: EdgeInsets.zero,
-                padding: EdgeInsets.symmetric(horizontal: 20.h,vertical: 13.h),
+                padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 13.h),
                 // border only from top and bottom
                 decoration: BoxDecoration(
-                  color: employeeItemTheme?.backgroundColor,
-                  border: Border(
-                    // bottom: BorderSide(
-                    //   color: theme.dividerColor
-                    // ),
-                    top: BorderSide(
-                      color: Get.isDarkMode ? const Color(0xFF414141) : const Color(0xFFF6F6F6),
-                    ),
-                  )
-                ),
+                    color: employeeItemTheme?.backgroundColor,
+                    border: Border(
+                      // bottom: BorderSide(
+                      //   color: theme.dividerColor
+                      // ),
+                      top: BorderSide(
+                        color: Get.isDarkMode
+                            ? const Color(0xFF414141)
+                            : const Color(0xFFF6F6F6),
+                      ),
+                    )),
                 child: Row(
                   children: [
                     Container(
@@ -110,21 +97,43 @@ class _EmployeesListState extends State<EmployeesList> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(employees[index].name,style: employeeItemTheme?.nameTextStyle,),
+                        Text(
+                          employees[index].name,
+                          style: employeeItemTheme?.nameTextStyle,
+                        ),
                         4.verticalSpace,
                         Row(
                           children: [
-                            SvgPicture.asset('assets/vectors/calendar.svg',color: employeeItemTheme?.iconTheme?.color,),
+                            SvgPicture.asset(
+                              'assets/vectors/calendar.svg',
+                              colorFilter: ColorFilter.mode(
+                                  employeeItemTheme?.iconTheme?.color ??
+                                      Colors.white,
+                                  BlendMode.srcIn),
+                            ),
                             4.horizontalSpace,
-                            Text(employees[index].date,style: employeeItemTheme?.subtitleTextStyle,),
+                            Text(
+                              employees[index].date,
+                              style: employeeItemTheme?.subtitleTextStyle,
+                            ),
                           ],
                         ),
                         6.verticalSpace,
                         Row(
                           children: [
-                            SvgPicture.asset('assets/vectors/vocation.svg',color: employeeItemTheme?.iconTheme?.color,height: 15.h,),
+                            SvgPicture.asset(
+                              'assets/vectors/vocation.svg',
+                              colorFilter: ColorFilter.mode(
+                                  employeeItemTheme?.iconTheme?.color ?? Colors.white,
+                                  BlendMode.srcIn
+                              ),
+                              height: 15.h,
+                            ),
                             4.horizontalSpace,
-                            Text(employees[index].location,style: employeeItemTheme?.subtitleTextStyle,),
+                            Text(
+                              employees[index].location,
+                              style: employeeItemTheme?.subtitleTextStyle,
+                            ),
                           ],
                         ),
                       ],

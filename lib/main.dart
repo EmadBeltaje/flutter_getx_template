@@ -54,7 +54,7 @@ Future<void> main() async {
                   child: MediaQuery(
                     // prevent font from scalling (some people use big/small device fonts)
                     // but we want our app font to still the same and dont get affected
-                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                    data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
                     child: widget!,
                   ),
                 );

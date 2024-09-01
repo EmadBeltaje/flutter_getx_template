@@ -137,13 +137,13 @@ class MyStyles {
   }
 
   // elevated button text style
-  static MaterialStateProperty<TextStyle?>? getElevatedButtonTextStyle(
+  static WidgetStateProperty<TextStyle?>? getElevatedButtonTextStyle(
       bool isLightTheme,
       {bool isBold = true,
       double? fontSize}) {
-    return MaterialStateProperty.resolveWith<TextStyle>(
-      (Set<MaterialState> states) {
-        if (states.contains(MaterialState.pressed)) {
+    return WidgetStateProperty.resolveWith<TextStyle>(
+      (Set<WidgetState> states) {
+        if (states.contains(WidgetState.pressed)) {
           return MyFonts.buttonTextStyle.copyWith(
             fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
             fontSize: fontSize ?? MyFonts.buttonTextSize,
@@ -151,7 +151,7 @@ class MyStyles {
                 ? LightThemeColors.buttonTextColor
                 : DarkThemeColors.buttonTextColor,
           );
-        } else if (states.contains(MaterialState.disabled)) {
+        } else if (states.contains(WidgetState.disabled)) {
           return MyFonts.buttonTextStyle.copyWith(
             fontSize: fontSize ?? MyFonts.buttonTextSize,
             fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
@@ -176,23 +176,23 @@ class MyStyles {
           {required bool isLightTheme}) =>
       ElevatedButtonThemeData(
         style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(6.r),
               //side: BorderSide(color: Colors.teal, width: 2.0),
             ),
           ),
-          elevation: MaterialStateProperty.all(0),
-          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          elevation: WidgetStateProperty.all(0),
+          padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
               EdgeInsets.symmetric(vertical: 8.h)),
           textStyle: getElevatedButtonTextStyle(isLightTheme),
-          backgroundColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.pressed)) {
+          backgroundColor: WidgetStateProperty.resolveWith<Color>(
+            (Set<WidgetState> states) {
+              if (states.contains(WidgetState.pressed)) {
                 return isLightTheme
                     ? LightThemeColors.buttonColor.withOpacity(0.5)
                     : DarkThemeColors.buttonColor.withOpacity(0.5);
-              } else if (states.contains(MaterialState.disabled)) {
+              } else if (states.contains(WidgetState.disabled)) {
                 return isLightTheme
                     ? LightThemeColors.buttonDisabledColor
                     : DarkThemeColors.buttonDisabledColor;
