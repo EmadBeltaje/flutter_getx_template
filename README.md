@@ -32,24 +32,15 @@ We all face the same problem when we want to start a new project we have to take
 
 This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
 
-## Upcoming Updates
-- [ ] Update to latest Flutter Version 🔥
-- [ ] Update to GetX 5 🚀
-- [ ] Add overlay loading functionality 🎨
-- [ ] Update to the latest flutter version 🚀
-- [ ] Upgrade android target to 35 to support latest android versions 🚀
-- [ ] Upgrade gradle version to the latest 🚀
-
-
-## Latest Updates 🚀
-- [x] Update to latest flutter version (3.10.6)
-- [x] Update Theme classes
-- [x] Update safe api call class
-- [x] Refactor Code
-- [x] Update Example
+## Latest Updates ([Updated Branch](https://github.com/EmadBeltaje/flutter_getx_template/tree/upgrade_to_latest_flutter_and_getx_version)) 🚀
+- [x] **Upgraded** project to work with the **latest Flutter versions** 🔥
+- [x] **Updated** to **GetX 5** 🚀
+- [x] **Fixed** deprecated code and ensured compatibility 🛠️
+- [x] **Refactored** code and resolved all Dart lints 🛠️
 
 
 ## What is new 🌟
+- [x] **GetX 5** support 
 - [x] Separate Local Notification helper from fcm helper 🛠️
 - [x] Integration Test for BaseClient 🧪
 - [x] Integration Test for Awesome Notifications Helper 🧪
@@ -59,7 +50,6 @@ This project will take care of all this repeatable things so you can start your 
 - [x] Unit Test for MyHive 🧪
 - [x] Unit Test for Localization Service 🧪
 - [x] Replace get_storage with SharedPref (unsolved testing problems with get_storage) 📦️
-- [x] Refactor Code 🛠️
 
 [//]: # (## Acknowledgment)
 
