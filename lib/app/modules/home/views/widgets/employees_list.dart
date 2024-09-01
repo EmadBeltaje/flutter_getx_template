@@ -16,9 +16,14 @@ class EmployeeMockModel {
   EmployeeMockModel(this.name, this.date, this.location,this.backgroundColor,this.imagePath);
 }
 
-class EmployeesList extends StatelessWidget {
-  EmployeesList({super.key});
+class EmployeesList extends StatefulWidget {
+  const EmployeesList({super.key});
 
+  @override
+  State<EmployeesList> createState() => _EmployeesListState();
+}
+
+class _EmployeesListState extends State<EmployeesList> {
   List<EmployeeMockModel> employees = [
     EmployeeMockModel(
         Strings.name.tr,
