@@ -35,7 +35,7 @@ class CustomSnackBar {
     Get.rawSnackbar(
       title: title,
       duration: duration ?? const Duration(seconds: 3),
-      snackStyle: SnackStyle.GROUNDED,
+      snackStyle: SnackStyle.grounded,
       backgroundColor: color ?? Colors.green,
       onTap: (snack){
         Get.closeAllSnackbars();
@@ -50,7 +50,7 @@ class CustomSnackBar {
     Get.rawSnackbar(
       title: title,
       duration: duration ?? const Duration(seconds: 3),
-      snackStyle: SnackStyle.GROUNDED,
+      snackStyle: SnackStyle.grounded,
       backgroundColor: color ?? Colors.redAccent,
       onTap: (snack){
         Get.closeAllSnackbars();
