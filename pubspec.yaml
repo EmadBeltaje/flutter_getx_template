@@ -7,7 +7,7 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.8
-  get: ^4.6.6 # for state management and context less stuff
+  get: ^4.7.2 # for state management and context less stuff
 
   logger: ^2.6.0 # log events in clear way insted of (print)
 
