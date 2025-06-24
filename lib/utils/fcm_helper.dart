@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter/foundation.dart';
 import '../app/data/local/my_shared_pref.dart';
 import 'awesome_notifications_helper.dart';
 
@@ -36,7 +36,9 @@ class FcmHelper {
       // if you are connected to firebase and still get error
       // check the todo up in the function else ignore the error
       // or stop fcm service from main.dart class
-      Logger().e(error);
+      if(kDebugMode) {
+        print(error);
+      }
     }
   }
 
@@ -71,7 +73,9 @@ class FcmHelper {
         _generateFcmToken();
       }
     } catch (error) {
-      Logger().e(error);
+      if(kDebugMode) {
+        print(error);
+      }
     }
   }
 

@@ -21,7 +21,7 @@ class MyWidgetsAnimator extends StatelessWidget {
 
 
   const MyWidgetsAnimator(
-      {Key? key,
+      {super.key,
         required this.apiCallStatus,
         required this.loadingWidget,
         required this.errorWidget,
@@ -32,13 +32,13 @@ class MyWidgetsAnimator extends StatelessWidget {
         this.animationDuration,
         this.transitionBuilder,
         this.hideSuccessWidgetWhileRefreshing = false,
-      })
-      : super(key: key);
+      });
 
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: animationDuration ?? const Duration(milliseconds: 300),
+      transitionBuilder: transitionBuilder ?? AnimatedSwitcher.defaultTransitionBuilder,
       child: switch(apiCallStatus){
         (ApiCallStatus.success) => successWidget,
         (ApiCallStatus.error) => errorWidget,
@@ -47,8 +47,7 @@ class MyWidgetsAnimator extends StatelessWidget {
         (ApiCallStatus.empty) => emptyWidget ?? (){return const SizedBox();},
         (ApiCallStatus.refresh) => refreshWidget ?? (hideSuccessWidgetWhileRefreshing ? successWidget :  (){return const SizedBox();}),
         (ApiCallStatus.cache) => successWidget,
-      }(),
-      transitionBuilder: transitionBuilder ?? AnimatedSwitcher.defaultTransitionBuilder
+      }()
     );
   }
 }

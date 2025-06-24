@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
 import '../../config/translations/strings_enum.dart';
 
@@ -19,8 +19,9 @@ showLoadingOverLay({required Future<dynamic> Function() asyncFunction,String? ms
     try{
       await asyncFunction();
     }catch(error){
-      Logger().e(error);
-      Logger().e(StackTrace.current);
+      if (kDebugMode) {
+        print(error);
+      }
     }
   },loadingWidget: Center(
     child: _getLoadingIndicator(msg: msg),
