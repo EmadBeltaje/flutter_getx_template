@@ -190,8 +190,8 @@ class MyStyles {
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
                 return isLightTheme
-                    ? LightThemeColors.buttonColor.withOpacity(0.5)
-                    : DarkThemeColors.buttonColor.withOpacity(0.5);
+                    ? LightThemeColors.buttonColor.withValues(alpha: 0.5)
+                    : DarkThemeColors.buttonColor.withValues(alpha: 0.5);
               } else if (states.contains(WidgetState.disabled)) {
                 return isLightTheme
                     ? LightThemeColors.buttonDisabledColor
