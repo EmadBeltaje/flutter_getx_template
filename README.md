@@ -18,7 +18,8 @@ Flutter Getx template: Starting up new project with all needed configuration has
 
 ## Coming Soon 🔜
 - [ ] Add cursor rules for easier use. 
-- [ ] Update dependencies to work with latest flutter vessions.
+- [x] Update dependencies to work with latest flutter vessions.
+- [x] Fix deprecations and warnings
 
 ## Introduction
 
@@ -35,10 +36,11 @@ We all face the same problem when we want to start a new project we have to take
 
 This project will take care of all this repeatable things so you can start your project in few steps and you will have all the mentioned points set up and ready to use 😎
 
-## Latest Updates ([Updated Branch](https://github.com/EmadBeltaje/flutter_getx_template/tree/upgrade_to_latest_flutter_and_getx_version)) 🚀
+<!--## Latest Updates ([Updated Branch](https://github.com/EmadBeltaje/flutter_getx_template/tree/upgrade_to_latest_flutter_and_getx_version)) 🚀
 - [x] **Upgraded** project to work with the **latest Flutter versions** 🔥
 - [x] **Upgraded** packages versions 📦
 - [x] **Updated** IOS configurations 🍎
+      -->
 
 
 ## What is new 🌟
