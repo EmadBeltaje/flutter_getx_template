@@ -28,7 +28,7 @@ class Header extends StatelessWidget {
             right: 0,
             top: -125.h,
             child: CircleAvatar(
-              backgroundColor: Colors.white.withOpacity(0.05),
+              backgroundColor: Colors.white.withValues(alpha: 0.05),
               radius: 111,
             ),
           ),
@@ -36,7 +36,7 @@ class Header extends StatelessWidget {
             right: -7.w,
             top: -160.h,
             child: CircleAvatar(
-              backgroundColor: Colors.white.withOpacity(0.05),
+              backgroundColor: Colors.white.withValues(alpha: 0.05),
               radius: 111,
             ),
           ),
@@ -44,7 +44,7 @@ class Header extends StatelessWidget {
             right: -21.w,
             top: -195.h,
             child: CircleAvatar(
-              backgroundColor: Colors.white.withOpacity(0.05),
+              backgroundColor: Colors.white.withValues(alpha: 0.05),
               radius: 111,
             ),
           ),
@@ -103,7 +103,7 @@ class Header extends StatelessWidget {
                       child: SvgPicture.asset(
                         Get.isDarkMode ? 'assets/vectors/moon.svg' : 'assets/vectors/sun.svg',
                         fit: BoxFit.none,
-                        color: Colors.white,
+                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                         height: 10,
                         width: 10,
                       ),
@@ -126,7 +126,7 @@ class Header extends StatelessWidget {
                       child: SvgPicture.asset(
                         'assets/vectors/language.svg',
                         fit: BoxFit.none,
-                        color: Colors.white,
+                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                         height: 10,
                         width: 10,
                       ),

@@ -56,7 +56,7 @@ class HomeView extends GetView<HomeController> {
                               child: SvgPicture.asset(
                                 'assets/vectors/profile.svg',
                                 fit: BoxFit.none,
-                                color: Colors.white,
+                                colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                                 height: 19.h,
                                 width: 19.h,
                               ),

@@ -16,6 +16,7 @@ class EmployeeMockModel {
   EmployeeMockModel(this.name, this.date, this.location,this.backgroundColor,this.imagePath);
 }
 
+// ignore: must_be_immutable
 class EmployeesList extends StatelessWidget {
   EmployeesList({super.key});
 
@@ -109,17 +110,17 @@ class EmployeesList extends StatelessWidget {
                         4.verticalSpace,
                         Row(
                           children: [
-                            SvgPicture.asset('assets/vectors/calendar.svg',color: employeeItemTheme?.iconTheme?.color,),
+                            SvgPicture.asset('assets/vectors/calendar.svg',colorFilter: ColorFilter.mode(employeeItemTheme!.iconTheme!.color!, BlendMode.srcIn)),
                             4.horizontalSpace,
-                            Text(employees[index].date,style: employeeItemTheme?.subtitleTextStyle,),
+                            Text(employees[index].date,style: employeeItemTheme.subtitleTextStyle,),
                           ],
                         ),
                         6.verticalSpace,
                         Row(
                           children: [
-                            SvgPicture.asset('assets/vectors/vocation.svg',color: employeeItemTheme?.iconTheme?.color,height: 15.h,),
+                            SvgPicture.asset('assets/vectors/vocation.svg',colorFilter: ColorFilter.mode(employeeItemTheme.iconTheme!.color!, BlendMode.srcIn),height: 15.h,),
                             4.horizontalSpace,
-                            Text(employees[index].location,style: employeeItemTheme?.subtitleTextStyle,),
+                            Text(employees[index].location,style: employeeItemTheme.subtitleTextStyle,),
                           ],
                         ),
                       ],
