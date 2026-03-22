@@ -16,6 +16,10 @@ Flutter Getx template: Starting up new project with all needed configuration has
 - Open Source : [Weather App](https://github.com/AbdQader/flutter_weather_app)
 - thunder_cli : [package](https://pub.dev/packages/thunder_cli)
 
+## Coming Soon 🔜
+- [ ] Add cursor rules for easier use. 
+- [ ] Update dependencies to work with latest flutter vessions.
+
 ## Introduction
 
 We all face the same problem when we want to start a new project we have to take care of some repeatable things such as
