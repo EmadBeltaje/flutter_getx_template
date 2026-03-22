@@ -78,6 +78,7 @@ class FcmHelper {
   /// this method will be triggered when the app generate fcm
   /// token successfully
   static _sendFcmTokenToServer(){
+    // ignore: unused_local_variable
     var token = MySharedPref.getFcmToken();
     // TODO SEND FCM TOKEN TO SERVER
   }
