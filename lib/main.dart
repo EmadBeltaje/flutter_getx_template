@@ -54,12 +54,12 @@ Future<void> main() async {
                   child: MediaQuery(
                     // prevent font from scalling (some people use big/small device fonts)
                     // but we want our app font to still the same and dont get affected
-                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                    data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
                     child: widget!,
                   ),
                 );
               },
-              initialRoute: AppPages.INITIAL, // first screen to show when app is running
+              initialRoute: AppPages.initial, // first screen to show when app is running
               getPages: AppPages.routes, // app screens
               locale: MySharedPref.getCurrentLocal(), // app language
               translations: LocalizationService.getInstance(), // localization services in app (controller app language)
