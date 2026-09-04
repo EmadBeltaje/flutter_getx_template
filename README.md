@@ -16,10 +16,42 @@ Flutter Getx template: Starting up new project with all needed configuration has
 - Open Source : [Weather App](https://github.com/AbdQader/flutter_weather_app)
 - thunder_cli : [package](https://pub.dev/packages/thunder_cli)
 
+## Finally 🎉 - your AI already knows this template 🤖
+
+Clone it. Open it in any AI coding agent. That’s it.
+
+This repo ships with **skills** - a built-in playbook for screens, theme, localization, APIs, and the rest of the stack - so your agent writes code the way this project already does, instead of inventing a second architecture.
+
+<!-- <details> -->
+<!-- <summary><b>What you can ask your AI</b></summary> -->
+
+### What you can ask your AI
+
+```
+• create a screen
+• create a controller
+• create / edit a widget
+• change theme  (light ↔ dark)
+• set the default theme
+• add a theme extension
+• change fonts
+• change language
+• set the default language
+• add a new language
+• add a translation
+• make an API request
+• rename the app
+• change the package name
+```
+
+> **NOTE:** When creating a **screen** or **widget**, the AI already follows this project's leads — ScreenUtil for sizes, localization for strings, theme for colors, `MyWidgetsAnimator` for API states, and `CustomSnackBar` for toasts. No extra briefing needed.
+
+<!-- </details> -->
+
 ## Coming Soon 🔜
-- [ ] Add cursor rules for easier use. 
+- [ ] AI agent coding guidelines for more reliable vibecoding.
+- [x] AI agent skills for easier use.
 - [x] Update dependencies to work with latest flutter vessions.
-- [x] Fix deprecations and warnings
 
 ## Introduction
 
@@ -44,7 +76,7 @@ This project will take care of all this repeatable things so you can start your 
 
 
 ## What is new 🌟
-- [x] **GetX 5** support 
+- [x] **GetX 5** support ([V5 Branch](https://github.com/EmadBeltaje/flutter_getx_template/tree/upgrade_to_latest_flutter_and_getx_version))
 - [x] Separate Local Notification helper from fcm helper 🛠️
 - [x] Integration Test for BaseClient 🧪
 - [x] Integration Test for Awesome Notifications Helper 🧪
