@@ -6,28 +6,28 @@ environment:
   sdk: '>=3.3.4 <4.0.0'
 
 dependencies:
-  cupertino_icons: ^1.0.8
+  cupertino_icons: ^1.0.9
   get: ^4.7.3 # for state management and context less stuff
 
   logger: ^2.6.0 # log events in clear way insted of (print)
 
   flutter_screenutil: ^5.9.3 # make app responsive
 
-  dio: ^5.9.2 # for api requests
+  dio: ^5.11.1 # for api requests
   http_mock_adapter: ^0.6.1 # mocking dio for testing
   pretty_dio_logger: ^1.4.0 # for dio api logging and debugging
 
   hive: ^2.2.3  # local database (SQFlite replacement)
   hive_flutter: ^1.1.0 # make it easy to use hive (no need for path provider)
-  shared_preferences: ^2.5.4 # shared preferences persistence key value store
+  shared_preferences: ^2.5.5 # shared preferences persistence key value store
 
-  firebase_core: ^4.5.0 # to initialize firebase services
-  firebase_messaging: ^16.1.2 # fcm services
-  awesome_notifications: ^0.11.0 # notifications services (will be used for fcm)
+  firebase_core: ^4.14.0 # to initialize firebase services
+  firebase_messaging: ^16.6.0 # fcm services
+  awesome_notifications: ^0.12.1 # notifications services (will be used for fcm)
 
-  rename_app: 1.4.0 # rename app
+  rename_app: ^1.6.6 # rename app
 
-  flutter_svg: ^2.2.4  # display svg vectors
+  flutter_svg: ^2.3.0  # display svg vectors
 
   flutter:
     sdk: flutter
@@ -37,7 +37,7 @@ dev_dependencies:
   flutter_lints: # for linting and warningd
   build_runner:  # generate dart files
   hive_generator: # generate hive files
-  pub_semver: ^2.1.4 # helper to generate hive models
+  pub_semver: ^2.2.1 # helper to generate hive models
   change_app_package_name: # change package name
   flutter_launcher_icons: ^0.14.4 # change app icon
 
