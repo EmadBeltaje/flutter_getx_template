@@ -16,7 +16,7 @@ Flutter Getx template: Starting up new project with all needed configuration has
 - Open Source : [Weather App](https://github.com/AbdQader/flutter_weather_app)
 - thunder_cli : [package](https://pub.dev/packages/thunder_cli)
 
-## Finally 🎉 - your AI already knows this template 🤖
+## Finally - your AI already knows this template 🤖
 
 Clone it. Open it in any AI coding agent. That’s it.
 
