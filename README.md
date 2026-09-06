@@ -20,7 +20,9 @@ Flutter Getx template: Starting up new project with all needed configuration has
 
 Clone it. Open it in any AI coding agent. That’s it.
 
-This repo ships with **skills** - a built-in playbook for screens, theme, localization, APIs, and the rest of the stack - so your agent writes code the way this project already does, instead of inventing a second architecture.
+Everything the agent needs lives under `.agent/`:
+- **skills** — a playbook for screens, theme, localization, APIs, and the rest of the stack
+- **context** — architecture + coding guidelines, so it follows this project's leads instead of inventing a second one
 
 <!-- <details> -->
 <!-- <summary><b>What you can ask your AI</b></summary> -->
@@ -49,7 +51,7 @@ This repo ships with **skills** - a built-in playbook for screens, theme, locali
 <!-- </details> -->
 
 ## Coming Soon 🔜
-- [ ] AI agent coding guidelines for more reliable vibecoding.
+- [x] AI agent coding guidelines for more reliable vibecoding.
 - [x] AI agent skills for easier use.
 - [x] Update dependencies to work with latest flutter vessions.
 
